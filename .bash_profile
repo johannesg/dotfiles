@@ -41,6 +41,7 @@ fi
 
 
 source $DOTFILES_DIR/.aliases
+source $DOTFILES_DIR/.profile
 
 # Clean up
 
@@ -50,6 +51,3 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 export SHELL_BASH SHELL_ZSH OS DOTFILES_DIR
 
-#http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
-stty -ixon
-#stty stop undef
