@@ -72,10 +72,8 @@ filetype plugin indent on    " required
 " Colors
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
 "set background=dark
-colorscheme hybrid
 
 "set ttimeoutlen=50
-let g:airline_powerline_fonts = 1
 
 if has('gui_running')
   set guioptions-=T  " no toolbar
@@ -91,7 +89,16 @@ if has('gui_running')
   else
 "    set guifont=DejaVu\ Sans\ Mono\ 10
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+    let g:airline_powerline_fonts = 1
   endif
+  colorscheme hybrid
+elseif has('win32')
+  set t_Co=16
+  colorscheme hybrid
+  let g:airline_powerline_fonts = 0
+else
+  colorscheme hybrid
+  let g:airline_powerline_fonts = 1
 endif
 
 " allow backspacing over everything in insert mode
@@ -132,7 +139,7 @@ if has("autocmd")
 "  autocmd BufNewFile,BufRead *.rss setfiletype xml
 
   " Source the vimrc file after saving it
-  autocmd bufwritepost .vimrc source $MYVIMRC
+  "autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
 
