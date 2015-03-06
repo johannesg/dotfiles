@@ -16,6 +16,7 @@ ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/.vim" ~
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.tmux.conf" ~
+ln -sfv "$DOTFILES_DIR/.tmux" ~
 ln -sfv "$DOTFILES_DIR/.fonts" ~
 
 fc-cache ~/.fonts
