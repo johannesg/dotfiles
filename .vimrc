@@ -30,6 +30,10 @@ Plugin 'tpope/vim-surround'
 "Plugin 'tpope/vim-repeat'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'gregsexton/gitv'
+
+Plugin 'fatih/vim-go'
 
 if !has("win32")
     Plugin 'Valloric/YouCompleteMe'

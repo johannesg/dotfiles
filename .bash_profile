@@ -42,6 +42,7 @@ fi
 
 source $DOTFILES_DIR/.aliases
 source $DOTFILES_DIR/.profile
+source $DOTFILES_DIR/.path
 
 # Clean up
 
