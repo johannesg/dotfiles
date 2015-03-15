@@ -22,6 +22,6 @@ ln -sfv "$DOTFILES_DIR/.fonts" ~
 
 fc-cache ~/.fonts
 
-#if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install/osx.sh" ]; then
-#    source "$DOTFILES_DIR/install/osx.sh"
-#fi
+if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install.osx.sh" ]; then
+    source "$DOTFILES_DIR/install.osx.sh"
+fi

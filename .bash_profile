@@ -95,3 +95,11 @@ source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
 source $DOTFILES_DIR/.aliases
 source $DOTFILES_DIR/.path
 
+if [ $OS = "OSX" ]; then
+    source $DOTFILES_DIR/.osx
+fi
+
+# Nodejs
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
