@@ -27,12 +27,31 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
-"Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'gregsexton/gitv'
 
+" snippets
+if has('python')
+    Plugin 'SirVer/ultisnips'
+    Plugin 'honza/vim-snippets'
+    " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+    let g:UltiSnipsExpandTrigger = '<c-j>'
+    " let g:UltiSnipsExpandTrigger='<tab>'
+    " let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+    " let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+
+    " If you want :UltiSnipsEdit to split your window.
+    let g:UltiSnipsEditSplit='vertical'
+endif
+
+" javascript
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+
+" go
 Plugin 'fatih/vim-go'
 
 if !has("win32")
