@@ -17,10 +17,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 
-Plugin 'jnurmine/Zenburn'
-Plugin 'tomasr/molokai'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'sickill/vim-monokai'
+" Color schemes
+" Plugin 'jnurmine/Zenburn'
+" Plugin 'tomasr/molokai'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'sickill/vim-monokai'
 Plugin 'w0ng/vim-hybrid'
 
 Plugin 'scrooloose/nerdtree.git'
@@ -40,7 +41,7 @@ if has('python')
     " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
     let g:UltiSnipsExpandTrigger = '<c-j>'
     " let g:UltiSnipsExpandTrigger='<tab>'
-    " let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+    let g:UltiSnipsJumpForwardTrigger = '<c-j>'
     " let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
     " If you want :UltiSnipsEdit to split your window.

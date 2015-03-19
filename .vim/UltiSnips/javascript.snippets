@@ -1,0 +1,24 @@
+snippet t "Description" b
+<${1:div}>
+	${VISUAL}
+</${1/(\w+).*/$1/}>
+endsnippet
+
+snippet im "Import module (ES6)" b
+import { ${1:} } from '${2:module name}'
+endsnippet
+
+snippet imd "Import module (ES6)" b
+import ${1:Exports} from '${2:module name}'
+endsnippet
+
+snippet rc "React class" b
+var ${1:ClassName} = React.createClass({
+	//mixin: [PureRenderMixin],
+
+	render: function() {
+		return ${2:<div></div>}
+	}
+});
+endsnippet
+
