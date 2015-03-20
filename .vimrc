@@ -21,10 +21,10 @@ Plugin 'tpope/vim-sensible'
 " Plugin 'jnurmine/Zenburn'
 " Plugin 'tomasr/molokai'
 " Plugin 'altercation/vim-colors-solarized'
-" Plugin 'sickill/vim-monokai'
+ Plugin 'sickill/vim-monokai'
 Plugin 'w0ng/vim-hybrid'
 
-Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
@@ -48,9 +48,10 @@ if has('python')
     let g:UltiSnipsEditSplit='vertical'
 endif
 
-" javascript
+" javascript & htmn
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
+Plugin 'mattn/emmet-vim'
 
 " go
 Plugin 'fatih/vim-go'
@@ -115,13 +116,13 @@ if has('gui_running')
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
     let g:airline_powerline_fonts = 1
   endif
-  colorscheme hybrid
+  colorscheme monokai
 elseif has('win32')
   set t_Co=16
   colorscheme hybrid
   let g:airline_powerline_fonts = 0
 else
-  colorscheme hybrid
+  colorscheme monokai
   let g:airline_powerline_fonts = 1
 endif
 
