@@ -1,7 +1,7 @@
 if has('win32')
   set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
   language English_United States 
-  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+"  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
 set nocompatible              " be iMproved, required
