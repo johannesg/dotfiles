@@ -55,6 +55,8 @@ endif
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
+" Plugin 'leafgarland/typescript-vim'
+let g:jsx_ext_required = 0
 
 " go
 Plugin 'fatih/vim-go'
@@ -151,7 +153,7 @@ endif
 
 
 " Set default tabs to 4, spaces only
-set ts=4 sts=4 sw=4 expandtab
+set ts=2 sts=2 sw=2 expandtab
 
 " Only do this part when compiled with support for autocommands
 if has("autocmd")

@@ -4,6 +4,22 @@ snippet t "Description" b
 </${1/(\w+).*/$1/}>
 endsnippet
 
+snippet row "Description" b
+<div className='row'>
+	${VISUAL}
+</div>
+endsnippet
+
+snippet col "Description" b
+<div className='col-md-4'>
+	${VISUAL}
+</div>
+endsnippet
+
+snippet lbl "Description" w
+<label htmlFor='${1}'>${VISUAL}</label>
+endsnippet
+
 snippet im "Import module (ES6)" b
 import { ${1:} } from '${2:module name}'
 endsnippet
@@ -22,3 +38,6 @@ var ${1:ClassName} = React.createClass({
 });
 endsnippet
 
+snippet sh "SortHeader" w
+<SortHeader id='${1}' displayName='${VISUAL}' onSort={${2:this.onSort}} direction={${3:this.getSortDirection}}></SortHeader>
+endsnippet
