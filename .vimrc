@@ -21,7 +21,7 @@ Plugin 'tpope/vim-sensible'
 " Plugin 'jnurmine/Zenburn'
 " Plugin 'tomasr/molokai'
 " Plugin 'altercation/vim-colors-solarized'
- Plugin 'sickill/vim-monokai'
+Plugin 'sickill/vim-monokai'
 Plugin 'w0ng/vim-hybrid'
 
 Plugin 'scrooloose/nerdtree'
@@ -33,6 +33,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'gregsexton/gitv'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'shime/vim-livedown'
+Plugin 'nginx.vim'
 
 " snippets
 if has('python')
@@ -57,6 +60,10 @@ let g:jsx_ext_required = 0
 
 " go
 Plugin 'fatih/vim-go'
+
+" rust
+Plugin 'rust-lang/rust.vim'
+" Plugin 'phildawes/racer'
 
 if !has("win32")
     Plugin 'Valloric/YouCompleteMe'

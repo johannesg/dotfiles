@@ -18,9 +18,8 @@ ln -sfv "$DOTFILES_DIR/.vim" ~
 ln -sfv "$DOTFILES_DIR/.vimrc" ~
 ln -sfv "$DOTFILES_DIR/.tmux.conf" ~
 ln -sfv "$DOTFILES_DIR/.tmux" ~
-ln -sfv "$DOTFILES_DIR/.fonts" ~
 
-fc-cache ~/.fonts
+$DOTFILES_DIR/powerline-fonts/install.sh
 
 if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install.osx.sh" ]; then
     source "$DOTFILES_DIR/install.osx.sh"
