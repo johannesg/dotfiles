@@ -1,7 +1,13 @@
-snippet t "Description" b
+snippet t "Description" w
 <${1:div}>
 	${VISUAL}
 </${1/(\w+).*/$1/}>
+endsnippet
+
+snippet divc "Div with class" b
+<div className='${1}'>
+	${VISUAL}
+</div>
 endsnippet
 
 snippet row "Description" b
@@ -14,6 +20,12 @@ snippet col "Description" b
 <div className='col-md-4'>
 	${VISUAL}
 </div>
+endsnippet
+
+snippet ul "Description" b
+<ul className='${1}'>
+	<li className='${2}'>${3}</li>
+</ul>
 endsnippet
 
 snippet lbl "Description" w
@@ -31,8 +43,19 @@ endsnippet
 snippet rc "React class" b
 var ${1:ClassName} = React.createClass({
 	//mixin: [PureRenderMixin],
+	getInitialState() {
+	},
 
-	render: function() {
+	componentWillMount() {
+	},
+
+	componentWillUnmount() {
+	},
+
+	componentWillReceiveProps(newProps) {
+	},
+
+	render() {
 		return ${2:<div></div>}
 	}
 });
