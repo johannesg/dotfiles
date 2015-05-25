@@ -36,6 +36,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'shime/vim-livedown'
 Plugin 'nginx.vim'
+Plugin 'mileszs/ack.vim'
 
 " snippets
 if has('python')
