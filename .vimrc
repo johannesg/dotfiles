@@ -66,8 +66,9 @@ Plugin 'fatih/vim-go'
 Plugin 'rust-lang/rust.vim'
 " Plugin 'phildawes/racer'
 
+Plugin 'Shougo/neocomplete.vim'
 if !has("win32")
-    Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Valloric/YouCompleteMe'
     Plugin 'rhysd/vim-clang-format'
 "   Plugin 'edkolev/tmuxline.vim'
 endif
@@ -143,6 +144,7 @@ set number              " show line numbers
 set hlsearch            "highlight all matching phrases   
 set cursorline
 "set cursorcolumn
+set backupcopy=yes
 
 set laststatus=2   " Always show the statusline
 set encoding=utf-8 " Necessary to show Unicode glyphs
