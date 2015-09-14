@@ -24,7 +24,8 @@ Plugin 'tpope/vim-sensible'
 Plugin 'sickill/vim-monokai'
 Plugin 'w0ng/vim-hybrid'
 
-Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
@@ -56,7 +57,7 @@ endif
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
-" Plugin 'leafgarland/typescript-vim'
+Plugin 'leafgarland/typescript-vim'
 let g:jsx_ext_required = 0
 
 " go
