@@ -180,6 +180,8 @@ if has("autocmd")
   "autocmd bufwritepost .vimrc source $MYVIMRC
 endif
 
+" Ctrl P
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Mappings
 let mapleader=','

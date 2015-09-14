@@ -40,8 +40,21 @@ snippet imd "Import module (ES6)" b
 import ${1:Exports} from '${2:module name}'
 endsnippet
 
+snippet rcd "React class (exported)" b
+import React from 'react'
+
+export default React.createClass({
+	//mixins: [PureRenderMixin],
+
+	render() {
+		return ${2:<div></div>}
+	}
+});
+
+endsnippet
+
 snippet rc "React class" b
-var ${1:ClassName} = React.createClass({
+let ${1:ClassName} = React.createClass({
 	//mixin: [PureRenderMixin],
 	getInitialState() {
 	},
