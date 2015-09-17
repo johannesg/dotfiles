@@ -1,0 +1,7 @@
+
+_GOPATH=$GOPATH
+
+function gopath {
+  export GOPATH=$_GOPATH:`pwd`
+  echo "Setting GOPATH to $GOPATH"
+}

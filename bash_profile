@@ -94,6 +94,7 @@ stty -ixon
 source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
 source $DOTFILES_DIR/aliases
 source $DOTFILES_DIR/path
+source $DOTFILES_DIR/functions
 
 if [ $OS = "OSX" ]; then
     source $DOTFILES_DIR/osx
