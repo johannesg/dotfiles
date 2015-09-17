@@ -92,11 +92,11 @@ stty -ixon
 #stty stop undef
 
 source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
-source $DOTFILES_DIR/.aliases
-source $DOTFILES_DIR/.path
+source $DOTFILES_DIR/aliases
+source $DOTFILES_DIR/path
 
 if [ $OS = "OSX" ]; then
-    source $DOTFILES_DIR/.osx
+    source $DOTFILES_DIR/osx
 fi
 
 # Nodejs

@@ -10,14 +10,14 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 
-ln -sfv "$DOTFILES_DIR/.bash_profile" ~
-ln -sfv "$DOTFILES_DIR/.bashrc" ~
-ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
-ln -sfv "$DOTFILES_DIR/.vim" ~
-ln -sfv "$DOTFILES_DIR/.vimrc" ~
-ln -sfv "$DOTFILES_DIR/.tmux.conf" ~
-ln -sfv "$DOTFILES_DIR/.tmux" ~
+ln -sfv "$DOTFILES_DIR/bash_profile" ~/.bash_profile
+ln -sfv "$DOTFILES_DIR/bashrc" ~/.bashrc
+ln -sfv "$DOTFILES_DIR/gitconfig" ~/.gitconfig
+ln -sfv "$DOTFILES_DIR/gitignore_global" ~/.gitignore_global
+ln -sfv "$DOTFILES_DIR/vim" ~/.vim
+ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
+ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
+ln -sfv "$DOTFILES_DIR/tmux" ~/.tmux
 
 $DOTFILES_DIR/powerline-fonts/install.sh
 
