@@ -25,11 +25,12 @@ Plugin 'sickill/vim-monokai'
 Plugin 'w0ng/vim-hybrid'
 
 Plugin 'kien/ctrlp.vim'
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'bling/vim-airline'
 Plugin 'airblade/vim-gitgutter'
@@ -38,6 +39,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'shime/vim-livedown'
 Plugin 'nginx.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/syntastic'
 
 " snippets
 if has('python')
@@ -58,6 +60,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'mattn/emmet-vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'maksimr/vim-jsbeautify'
 let g:jsx_ext_required = 0
 
 " go
@@ -182,6 +185,18 @@ endif
 
 " Ctrl P
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_working_path_mode = ''
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Mappings
 let mapleader=','
