@@ -7,6 +7,7 @@ if has('win32')
 endif
 
 
+"NeoBundle Scripts-----------------------------"
 if has('vim_starting')
   if &compatible
     set nocompatible               " Be iMproved
@@ -99,9 +100,13 @@ if !has("win32")
 "   NeoBundle 'edkolev/tmuxline.vim'
 endif
 
-
 call neobundle#end()
 filetype plugin indent on    " required
+
+" If there are uninstalled bundles found on startup,"
+" this will conveniently prompt you to install them."
+NeoBundleCheck"
+"End NeoBundle Scripts-------------------------"
 
 " Colors
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
