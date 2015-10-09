@@ -209,7 +209,6 @@ noremap <S-C-Tab> gT
 noremap <C-Up> ddkP
 noremap <C-Down> ddp
 nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>b :ls<CR>:buffer<Space>
 noremap <F6> :wa<CR>:make<CR>
 inoremap <F6> <Esc>:wa<CR>:make<CR>
 noremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
@@ -230,4 +229,8 @@ map <leader>ev :vsp %%
 map <leader>et :tabe %%
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
+
+nnoremap <leader>f :Unite file<CR>
+nnoremap <leader>d :Unite file_rec<CR>
+nnoremap <leader>b :Unite buffer<CR>
 
