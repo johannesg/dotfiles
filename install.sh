@@ -17,7 +17,7 @@ ln -sfv "$DOTFILES_DIR/gitignore_global" ~/.gitignore_global
 ln -sfv "$DOTFILES_DIR/vim" ~/.vim
 ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
 ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
-ln -sfv "$DOTFILES_DIR/.tmux" ~/.tmux
+ln -sfv "$DOTFILES_DIR/tmux" ~/.tmux
 
 $DOTFILES_DIR/powerline-fonts/install.sh
 
