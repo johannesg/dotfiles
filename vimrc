@@ -1,50 +1,72 @@
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
+
 if has('win32')
   set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
   language English_United States 
-"  set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
 endif
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-sensible'
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+
+NeoBundle 'tpope/vim-sensible'
 
 " Color schemes
 " Plugin 'jnurmine/Zenburn'
 " Plugin 'tomasr/molokai'
 " Plugin 'altercation/vim-colors-solarized'
-Plugin 'sickill/vim-monokai'
-Plugin 'w0ng/vim-hybrid'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'w0ng/vim-hybrid'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'bling/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'gregsexton/gitv'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'shime/vim-livedown'
-Plugin 'nginx.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/syntastic'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'shime/vim-livedown'
+NeoBundle 'nginx.vim'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/unite.vim'
 
 " snippets
 if has('python')
-    Plugin 'SirVer/ultisnips'
-    Plugin 'honza/vim-snippets'
+    NeoBundle 'SirVer/ultisnips'
+    NeoBundle 'honza/vim-snippets'
     " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
     let g:UltiSnipsExpandTrigger = '<c-j>'
     " let g:UltiSnipsExpandTrigger='<tab>'
@@ -56,58 +78,30 @@ if has('python')
 endif
 
 " javascript & htmn
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
-Plugin 'mattn/emmet-vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'maksimr/vim-jsbeautify'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'maksimr/vim-jsbeautify'
 let g:jsx_ext_required = 0
 
 " go
-Plugin 'fatih/vim-go'
+NeoBundle 'fatih/vim-go'
 
 " rust
-Plugin 'rust-lang/rust.vim'
-" Plugin 'phildawes/racer'
+" NeoBundle 'rust-lang/rust.vim'
+" NeoBundle 'phildawes/racer'
 
-Plugin 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neocomplete.vim'
 if !has("win32")
-    " Plugin 'Valloric/YouCompleteMe'
-    Plugin 'rhysd/vim-clang-format'
-"   Plugin 'edkolev/tmuxline.vim'
+    " NeoBundle 'Valloric/YouCompleteMe'
+"    NeoBundle 'rhysd/vim-clang-format'
+"   NeoBundle 'edkolev/tmuxline.vim'
 endif
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoi a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
+call neobundle#end()
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
 
 " Colors
 set t_Co=256 " Explicitly tell Vim that the terminal supports 256 colors
