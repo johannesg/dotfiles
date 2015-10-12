@@ -230,7 +230,18 @@ map <leader>et :tabe %%
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
-nnoremap <leader>f :Unite file<CR>
-nnoremap <leader>d :Unite file_rec<CR>
-nnoremap <leader>b :Unite buffer<CR>
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+let g:unite_source_history_yank_enable = 1
+"
+" Use ag in unite grep source.
+let g:unite_source_grep_max_candidates = 200
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
+
+nnoremap <leader>f  :<C-u>Unite file_rec/async<CR>
+nnoremap <leader>b  :<C-u>Unite buffer<CR>
+nnoremap <leader>y  :<C-u>Unite history/yank<CR>
+nnoremap <leader>r  :<C-u>Unite register:abcdefq<CR>
+nnoremap <leader>g  :<C-u>Unite grep:.<CR>
 
