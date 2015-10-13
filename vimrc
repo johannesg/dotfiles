@@ -241,6 +241,13 @@ let g:unite_source_grep_command = 'ag'
 let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
 let g:unite_source_grep_recursive_opt = ''
 
+"
+" Use start insert by default.
+call unite#custom#profile('default', 'context', {
+      \   'start_insert' : 1,
+      \   'ignorecase'   : 1
+      \ })
+
 nnoremap <leader>f  :<C-u>Unite file_rec/async<CR>
 nnoremap <leader>b  :<C-u>Unite buffer<CR>
 nnoremap <leader>y  :<C-u>Unite history/yank<CR>
