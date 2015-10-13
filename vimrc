@@ -63,6 +63,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
 
 " snippets
 if has('python')
@@ -208,7 +209,7 @@ noremap <S-C-Tab> gT
 
 noremap <C-Up> ddkP
 noremap <C-Down> ddp
-nnoremap <leader>nt :NERDTreeToggle<CR>
+" nnoremap <leader>nt :NERDTreeToggle<CR>
 noremap <F6> :wa<CR>:make<CR>
 inoremap <F6> <Esc>:wa<CR>:make<CR>
 noremap <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
@@ -230,6 +231,7 @@ map <leader>et :tabe %%
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
+" Unite
 let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 let g:unite_source_history_yank_enable = 1
 "
@@ -245,3 +247,15 @@ nnoremap <leader>y  :<C-u>Unite history/yank<CR>
 nnoremap <leader>r  :<C-u>Unite register:abcdefq<CR>
 nnoremap <leader>g  :<C-u>Unite grep:.<CR>
 
+" VimFiler
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$']
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+
+call vimfiler#custom#profile('default', 'context', {
+      \   'explorer' : 1,
+      \   'safe' : 1
+      \ })
+
+nnoremap <leader>e  :<C-u>VimFilerExplorer<CR>
