@@ -231,9 +231,6 @@ map <leader>et :tabe %%
 
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
-" Unite
-let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-let g:unite_source_history_yank_enable = 1
 "
 " Use ag in unite grep source.
 let g:unite_source_grep_max_candidates = 200
@@ -243,12 +240,16 @@ let g:unite_source_grep_recursive_opt = ''
 
 "
 " Use start insert by default.
+      " \   'start_insert' : 1,
 call unite#custom#profile('default', 'context', {
-      \   'start_insert' : 1,
       \   'ignorecase'   : 1
       \ })
 
-nnoremap <leader>f  :<C-u>Unite file_rec/async<CR>
+" Unite
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+let g:unite_source_history_yank_enable = 1
+
+nnoremap <leader>f  :<C-u>Unite file_rec/async -start-insert<CR>
 nnoremap <leader>b  :<C-u>Unite buffer<CR>
 nnoremap <leader>y  :<C-u>Unite history/yank<CR>
 nnoremap <leader>r  :<C-u>Unite register:abcdefq<CR>
@@ -256,7 +257,7 @@ nnoremap <leader>g  :<C-u>Unite grep:.<CR>
 
 " VimFiler
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = ['^\.git$', '^\.DS_Store$']
+let g:vimfiler_ignore_pattern = ['^\.git$', '^\.svn$', 'node_modules', '^\.DS_Store$']
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 

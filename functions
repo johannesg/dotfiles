@@ -3,5 +3,6 @@ _GOPATH=$GOPATH
 
 function gopath {
   export GOPATH=$_GOPATH:`pwd`
+  export GOPATH=$_GOPATH:`pwd`:`pwd`/vendor/src
   echo "Setting GOPATH to $GOPATH"
 }
