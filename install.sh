@@ -15,10 +15,10 @@ ln -sfv "$DOTFILES_DIR/bashrc" ~/.bashrc
 ln -sfv "$DOTFILES_DIR/gitconfig" ~/.gitconfig
 ln -sfv "$DOTFILES_DIR/gitignore_global" ~/.gitignore_global
 ln -sfv "$DOTFILES_DIR/agignore" ~/.agignore
-ln -sfv "$DOTFILES_DIR/vim" ~/.vim
+ln -snfv "$DOTFILES_DIR/vim" ~/.vim
 ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
 ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
-ln -sfv "$DOTFILES_DIR/tmux" ~/.tmux
+ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 
 $DOTFILES_DIR/powerline-fonts/install.sh
 
