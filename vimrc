@@ -88,7 +88,11 @@ NeoBundle 'maksimr/vim-jsbeautify'
 let g:jsx_ext_required = 0
 
 " go
-NeoBundle 'fatih/vim-go'
+NeoBundleLazy 'fatih/vim-go', {
+      \ 'autoload' : {
+      \     'filetypes' : ['go'],
+      \    },
+      \ }
 
 " rust
 " NeoBundle 'rust-lang/rust.vim'
@@ -128,7 +132,7 @@ if has('gui_running')
     let g:airline_powerline_fonts = 0
   else
 "    set guifont=DejaVu\ Sans\ Mono\ 10
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
     let g:airline_powerline_fonts = 1
   endif
   colorscheme monokai
