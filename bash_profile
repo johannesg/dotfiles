@@ -75,6 +75,8 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
+source $DOTFILES_DIR/homebrew
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
