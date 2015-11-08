@@ -130,6 +130,9 @@ if has('gui_running')
 "    set guifont=Powerline_Consolas:h11:cANSI
 "    set guifont=Inconsolata_for_Powerline:h11:cANSI
     let g:airline_powerline_fonts = 0
+  elseif has('mac')
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline:12
+    let g:airline_powerline_fonts = 1
   else
 "    set guifont=DejaVu\ Sans\ Mono\ 10
     set guifont=Droid\ Sans\ Mono\ for\ Powerline\ 11
