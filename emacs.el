@@ -1,3 +1,8 @@
+;;; package --- Summary
+
+;;; Commentary:
+
+;;; Code:
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -8,6 +13,7 @@
     ("196cc00960232cfc7e74f4e95a94a5977cb16fd28ba7282195338f68c84058ec" default)))
  '(inhibit-startup-screen t))
 
+;;; package init
 (require 'package)
 
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
@@ -38,11 +44,19 @@ Return a list of installed packages or nil for every skipped package."
 
 (ensure-package-installed 'evil
 			  'evil-leader
+			  'evil-easymotion
                           'helm
-			  'monokai-theme)
+			  'monokai-theme
+			  'go-mode
+			  'flycheck)
+
+(load-theme 'monokai)
+;(set-face-attribute 'default nil :font "Consolas-11.0")
+
+;;; Evil mode
 (require 'evil)
 (require 'evil-leader)
-(require 'helm-config)
+(require 'evil-easymotion)
 
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
@@ -51,10 +65,24 @@ Return a list of installed packages or nil for every skipped package."
   "f" 'find-file
   "b" 'switch-to-buffer)
 
+(evilem-default-keybindings "SPC")
+
 (evil-mode t)
 
-(load-theme 'monokai)
-
+(require 'helm-config)
 (helm-mode t)
 
-;(set-face-attribute 'default nil :font "Consolas-11.0")
+;; Go
+(require 'go-mode-autoloads)
+
+(defun my-go-mode-hook ()
+  ; Call gofmt before save
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  ; godef jump key binding
+  (local-set-key (kbd "M-.") 'godef-jump))
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(provide 'emacs)
+;;; emacs.el ends here
