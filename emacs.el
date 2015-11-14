@@ -15,6 +15,9 @@
  '(js2-basic-offset 2))
 
 (custom-set-faces
+
+
+
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -42,12 +45,15 @@
   '(evil
     evil-leader
     evil-easymotion
-    magit
     evil-magit
+    powerline
+    powerline-evil
+    pt
+    magit
     helm
     monokai-theme
-    go-mode
     flycheck
+    go-mode
     js2-mode
     json-mode
     web-mode)
@@ -63,33 +69,8 @@
 
 (my/install-packages)
 
-;(defun ensure-package-installed (&rest packages)
-;  "Assure every package is installed, ask for installation if it’s not.
-;
-;Return a list of installed packages or nil for every skipped package."
-;  (mapcar
-;   (lambda (package)
-;     (if (package-installed-p package)
-;         nil
-;       (if (y-or-n-p (format "Package %s is missing. Install it? " package))
-;           (package-install package)
-;         package)))
-;   packages))
-
-
-;(ensure-package-installed 'evil
-;			  'evil-leader
-;			  'evil-easymotion
-;        'magit
-;			  'evil-magit
-;        'helm
-;        'monokai-theme
-;			  'go-mode
-;			  'flycheck
-;        'js2-mode
-;        'json-mode
-;        'web-mode)
-
+;; ----------
+;; Misc
 (load-theme 'monokai)
 ;(set-face-attribute 'default nil :font "Consolas-11.0")
 
@@ -113,6 +94,13 @@
 
 (evilem-default-keybindings "SPC")
 
+;; ------------
+;; Powerline
+(require 'powerline)
+(require 'powerline-evil)
+;(powerline-default-theme)
+;(powerline-evil-center-color-theme)
+(powerline-evil-vim-color-theme)
 
 ;; ----------
 ;; Helm
