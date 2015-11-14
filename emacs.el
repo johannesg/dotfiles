@@ -45,6 +45,7 @@
   '(evil
     evil-leader
     evil-easymotion
+    evil-surround
     evil-magit
     powerline
     powerline-evil
@@ -71,6 +72,10 @@
 
 ;; ----------
 ;; Misc
+(global-auto-revert-mode t)
+
+(global-linum-mode)
+
 (load-theme 'monokai)
 ;(set-face-attribute 'default nil :font "Consolas-11.0")
 
@@ -81,9 +86,11 @@
 (require 'evil-leader)
 (require 'evil-easymotion)
 (require 'evil-magit)
+(require 'evil-surround)
 
 (evil-mode t)
 
+(global-evil-surround-mode 1)
 (global-evil-leader-mode)
 (evil-leader/set-leader ",")
 
@@ -133,6 +140,8 @@
 
 ;; ----------
 ;; Web development
+(require 'web-mode)
+(require 'js2-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; use web-mode for .jsx files
