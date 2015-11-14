@@ -41,6 +41,8 @@
 (package-initialize)
 
 (require 'cl-lib)
+(require 'cl)
+
 (defvar my/packages
   '(evil
     evil-leader
@@ -52,12 +54,18 @@
     pt
     magit
     helm
+    helm-ls-git
     monokai-theme
     flycheck
+    flycheck-protobuf
+    auto-complete
+    protobuf-mode
     go-mode
+    go-autocomplete
     js2-mode
     json-mode
-    web-mode)
+    web-mode
+    )
   )
 (defun my/install-packages ()
   "Ensure the packages I use are installed. See `my/packages'."
@@ -95,11 +103,14 @@
 (evil-leader/set-leader ",")
 
 (evil-leader/set-key
-  "f" 'find-file
+  "f" 'helm-find-files
   "b" 'switch-to-buffer
-  "g" 'magit-status)
+  "g" 'pt-regexp)
 
 (evilem-default-keybindings "SPC")
+
+;; ------------
+(require 'protobuf-mode)
 
 ;; ------------
 ;; Powerline
@@ -112,12 +123,15 @@
 ;; ----------
 ;; Helm
 (require 'helm-config)
+(require 'helm-ls-git)
 (helm-mode t)
+
 
 ;; ----------
 ;; Flycheck
 ;; http://www.flycheck.org/manual/latest/index.html
 (require 'flycheck)
+(require 'flycheck-protobuf)
 
 ;; turn on flychecking globally
 (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -129,12 +143,24 @@
 ;; ----------
 ;; Go
 (require 'go-mode-autoloads)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
 
 (defun my-go-mode-hook ()
+  ; Use goimports instead of go-fmt
+  (setq gofmt-command "goimports")
   ; Call gofmt before save
   (add-hook 'before-save-hook 'gofmt-before-save)
+
+  ;; (if (not (string-match "go" compile-command))
+  ;;     (set (make-local-variable 'compile-command)
+  ;;          "go build -v && go test -v && go vet"))
+
   ; godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump))
+
+  ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
@@ -178,6 +204,13 @@
 ;; this hopefully sets up path and other vars better
 ;(when (memq window-system '(mac ns))
 ;  (exec-path-from-shell-initialize))
+
+;; ----------
+;; Global Mappings
+(global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
+(global-set-key (kbd "C-x C-d") 'helm-browse-project)
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
 ;; ----------
 (provide 'emacs)
