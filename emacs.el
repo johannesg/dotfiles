@@ -24,6 +24,8 @@
  ;; If there is more than one, they won't work right.
  )
 
+(tool-bar-mode 0)
+
 ;;; package init
 (require 'package)
 
