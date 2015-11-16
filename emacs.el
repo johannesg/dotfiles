@@ -65,6 +65,8 @@
     protobuf-mode
     go-mode
     go-autocomplete
+    go-dlv
+    go-rename
     js2-mode
     json-mode
     web-mode
