@@ -51,6 +51,7 @@
     evil-easymotion
     evil-surround
     evil-magit
+    evil-jumper
     powerline
     powerline-evil
     pt
@@ -97,8 +98,10 @@
 (require 'evil-easymotion)
 (require 'evil-magit)
 (require 'evil-surround)
+(require 'evil-jumper)
 
 (evil-mode t)
+(evil-jumper-mode t)
 
 (global-evil-surround-mode 1)
 (global-evil-leader-mode)
