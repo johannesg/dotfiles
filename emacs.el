@@ -50,12 +50,12 @@
     evil-leader
     evil-easymotion
     evil-surround
-    evil-magit
+;    evil-magit
     evil-jumper
     powerline
     powerline-evil
     pt
-    magit
+;    magit
     helm
     helm-ls-git
     monokai-theme
@@ -63,13 +63,14 @@
     flycheck-protobuf
     auto-complete
     protobuf-mode
-    go-mode
-    go-autocomplete
-    go-dlv
-    go-rename
-    js2-mode
-    json-mode
-    web-mode
+;    go-mode
+;    go-autocomplete
+;    go-dlv
+;    go-rename
+;    js2-mode
+;    json-mode
+;    web-mode
+    use-package
     )
   )
 (defun my/install-packages ()
@@ -85,6 +86,11 @@
 
 ;; ----------
 ;; Misc
+(require 'use-package)
+
+(setq use-package-verbose t)
+(setq use-package-always-ensure t)
+
 (global-auto-revert-mode t)
 
 (global-linum-mode)
@@ -98,7 +104,7 @@
 (require 'evil)
 (require 'evil-leader)
 (require 'evil-easymotion)
-(require 'evil-magit)
+;(require 'evil-magit)
 (require 'evil-surround)
 (require 'evil-jumper)
 
@@ -147,12 +153,10 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
+(ac-config-default)
 ;; ----------
 ;; Go
-(require 'go-mode-autoloads)
-(require 'go-autocomplete)
-(require 'auto-complete-config)
-(ac-config-default)
+
 
 (defun my-go-mode-hook ()
   ; Use goimports instead of go-fmt
@@ -162,36 +166,46 @@
 
   ;; (if (not (string-match "go" compile-command))
   ;;     (set (make-local-variable 'compile-command)
-  ;;          "go build -v && go test -v && go vet"))
-
-  ; godef jump key binding
+  ;;          "go build -v && go test -v && go vet")) ; godef jump key binding
   (local-set-key (kbd "M-.") 'godef-jump))
 
   ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
-(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(use-package go-mode
+             :mode "\\.go\\'"
+             :config
+             (add-hook 'go-mode-hook 'my-go-mode-hook)
+             (use-package go-autocomplete)
+;             (use-package go-dlv)
+             (use-package go-rename)
+             ; (require 'go-mode-autoloads)
+             ; (require 'go-autocomplete)
+             ; (require 'auto-complete-config)
+             )
 
 ;; ----------
 ;; Web development
-(require 'web-mode)
-(require 'js2-mode)
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
-;; use web-mode for .jsx files
-(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
+;(require 'web-mode)
+;(require 'js2-mode)
+;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+;;
+;;;; use web-mode for .jsx files
+;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
 
 ;; disable jshint since we prefer eslint checking
-(setq-default flycheck-disabled-checkers
-              (append flycheck-disabled-checkers
-                      '(javascript-jshint)))
-
+;(setq-default flycheck-disabled-checkers
+;              (append flycheck-disabled-checkers
+;                      '(javascript-jshint)))
+;
 ;; use eslint with web-mode for jsx files
-(flycheck-add-mode 'javascript-eslint 'web-mode)
+;(flycheck-add-mode 'javascript-eslint 'web-mode)
 
 ;; disable json-jsonlist checking for json files
-(setq-default flycheck-disabled-checkers
-  (append flycheck-disabled-checkers
-    '(json-jsonlist)))
+;(setq-default flycheck-disabled-checkers
+;  (append flycheck-disabled-checkers
+;    '(json-jsonlist)))
 
 ;(setq js-indent-level 2)
 
@@ -205,6 +219,36 @@
 )
 (add-hook 'web-mode-hook  'my-web-mode-hook)
 
+(use-package json-mode
+             :mode "\\.json\\'"
+             :config 
+             (setq-default flycheck-disabled-checkers
+                           (append flycheck-disabled-checkers
+                                   '(json-jsonlist)))
+             )
+
+(use-package js2-mode
+             :mode (( "\\.js\\'" . js2-mode ))
+             :config
+             (setq-default flycheck-disabled-checkers
+                           (append flycheck-disabled-checkers
+                                   '(javascript-jshint)))
+             )
+
+(use-package web-mode
+;             :mode (("\\.jsx\\'" . web-mode ))
+             :mode (("\\.html\\'" . web-mode ))
+             :config
+             (add-hook 'web-mode-hook  'my-web-mode-hook)
+             (flycheck-add-mode 'javascript-eslint 'web-mode)
+             )
+;; -------------
+(use-package elm-mode
+             :mode (("\\.elm\\'" . elm-mode ))
+             :config
+             (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
+             (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
+             :ensure t)
 ;; ---------
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
@@ -216,8 +260,18 @@
 ;; Global Mappings
 (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
 (global-set-key (kbd "C-x C-d") 'helm-browse-project)
-(global-set-key (kbd "C-x g") 'magit-status)
-(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+;(global-set-key (kbd "C-x g") 'magit-status)
+;(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
+
+(use-package magit
+             :commands (magit-status magit-dispatch-popup)
+             :init
+             (bind-key "C-x g" 'magit-status)
+             (bind-key "C-x M-g" 'magit-dispatch-popup)
+             :config
+             (use-package evil-magit)
+             (require 'evil-magit)
+             )
 
 ;; ----------
 (provide 'emacs)
