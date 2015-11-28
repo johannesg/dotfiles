@@ -31,7 +31,7 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
-(setq package-enable-at-startup nil)
+;(setq package-enable-at-startup nil)
 
 ;; Activate installed packages
 (package-initialize)
@@ -40,10 +40,10 @@
 ;; Misc
 (eval-when-compile
   (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
+;(require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
-(setq use-package-verbose t)
+;(setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
 (global-auto-revert-mode t)
