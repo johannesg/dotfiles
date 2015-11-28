@@ -16,8 +16,6 @@
 
 (custom-set-faces
 
-
-
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -35,58 +33,15 @@
 
 (setq package-enable-at-startup nil)
 
-;; Make sure to have downloaded archive description.
-(or (file-exists-p package-user-dir)
-    (package-refresh-contents))
-
 ;; Activate installed packages
 (package-initialize)
 
-(require 'cl-lib)
-(require 'cl)
-
-(defvar my/packages
-  '(evil
-    evil-leader
-    evil-easymotion
-    evil-surround
-;    evil-magit
-    evil-jumper
-    powerline
-    powerline-evil
-    pt
-;    magit
-    helm
-    helm-ls-git
-    monokai-theme
-    flycheck
-    flycheck-protobuf
-    auto-complete
-    protobuf-mode
-;    go-mode
-;    go-autocomplete
-;    go-dlv
-;    go-rename
-;    js2-mode
-;    json-mode
-;    web-mode
-    use-package
-    )
-  )
-(defun my/install-packages ()
-  "Ensure the packages I use are installed. See `my/packages'."
-  (interactive)
-  (let ((missing-packages (cl-remove-if #'package-installed-p my/packages)))
-    (when missing-packages
-      (message "Installing %d missing package(s)" (length missing-packages))
-      (package-refresh-contents)
-      (mapc #'package-install missing-packages))))
-
-(my/install-packages)
-
 ;; ----------
 ;; Misc
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
+(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
 
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
@@ -95,68 +50,90 @@
 
 (global-linum-mode)
 
-(load-theme 'monokai)
+(setq-default indent-tabs-mode nil)
+(setq-default tab-width 2)
 ;(set-face-attribute 'default nil :font "Consolas-11.0")
+
+(use-package monokai-theme
+  :config
+  (load-theme 'monokai)
+  )
 
 ;; ----------
 ;; Evil mode
-(setq evil-want-C-u-scroll t)
-(require 'evil)
-(require 'evil-leader)
-(require 'evil-easymotion)
-;(require 'evil-magit)
-(require 'evil-surround)
-(require 'evil-jumper)
+(use-package evil
+  :init
+  (setq evil-want-C-u-scroll t)
+  :config
+  (evil-mode t)
+  )
 
-(evil-mode t)
-(evil-jumper-mode t)
+(use-package evil-leader
+  :config
+  (global-evil-leader-mode)
+  (evil-leader/set-leader ",")
+  (evil-leader/set-key
+    "f" 'helm-find-files
+    "b" 'switch-to-buffer
+    "g" 'pt-regexp)
+  )
 
-(global-evil-surround-mode 1)
-(global-evil-leader-mode)
-(evil-leader/set-leader ",")
+(use-package evil-easymotion
+  :config
+  (evilem-default-keybindings "SPC")
+  )
 
-(evil-leader/set-key
-  "f" 'helm-find-files
-  "b" 'switch-to-buffer
-  "g" 'pt-regexp)
+(use-package evil-surround
+  :config
+  (global-evil-surround-mode 1)
+  )
 
-(evilem-default-keybindings "SPC")
+(use-package evil-jumper
+  :config
+  (evil-jumper-mode t)
+  )
 
 ;; ------------
-(require 'protobuf-mode)
+(use-package pt)
 
 ;; ------------
 ;; Powerline
-(require 'powerline)
-(require 'powerline-evil)
-;(powerline-default-theme)
-;(powerline-evil-center-color-theme)
-(powerline-evil-vim-color-theme)
+(use-package powerline
+  :config
+  (use-package powerline-evil)
+  ;(powerline-default-theme)
+  ;(powerline-evil-center-color-theme)
+  (powerline-evil-vim-color-theme)
+)
 
 ;; ----------
 ;; Helm
-(require 'helm-config)
-(require 'helm-ls-git)
-(helm-mode t)
+(use-package helm
+  :config
+  (use-package helm-ls-git)
+  (helm-mode t)
+  (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
+  (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+)
 
+
+(use-package auto-complete
+  :config
+  (ac-config-default)
+)
 
 ;; ----------
 ;; Flycheck
 ;; http://www.flycheck.org/manual/latest/index.html
-(require 'flycheck)
-(require 'flycheck-protobuf)
 
-;; turn on flychecking globally
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :config
+  ;; turn on flychecking globally
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  )
 
-;; ----------
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-
-(ac-config-default)
 ;; ----------
 ;; Go
-
 
 (defun my-go-mode-hook ()
   ; Use goimports instead of go-fmt
@@ -171,6 +148,15 @@
 
   ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
+(use-package magit
+             :commands (magit-status magit-dispatch-popup)
+             :init
+             (bind-key "C-x g" 'magit-status)
+             (bind-key "C-x M-g" 'magit-dispatch-popup)
+             :config
+             (use-package evil-magit)
+             (require 'evil-magit)
+             )
 
 (use-package go-mode
              :mode "\\.go\\'"
@@ -184,40 +170,16 @@
              ; (require 'auto-complete-config)
              )
 
-;; ----------
-;; Web development
+;; ------------
+;; protobuf
+(use-package protobuf-mode
+  :mode "\\.proto\\'"
+  :config
+  (use-package flycheck-protobuf)
+  )
 
-;(require 'web-mode)
-;(require 'js2-mode)
-;(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-;;
-;;;; use web-mode for .jsx files
-;(add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode))
-
-;; disable jshint since we prefer eslint checking
-;(setq-default flycheck-disabled-checkers
-;              (append flycheck-disabled-checkers
-;                      '(javascript-jshint)))
-;
-;; use eslint with web-mode for jsx files
-;(flycheck-add-mode 'javascript-eslint 'web-mode)
-
-;; disable json-jsonlist checking for json files
-;(setq-default flycheck-disabled-checkers
-;  (append flycheck-disabled-checkers
-;    '(json-jsonlist)))
-
-;(setq js-indent-level 2)
-
-;; adjust indents for web-mode to 2 spaces
-(defun my-web-mode-hook ()
-  "Hooks for Web mode. Adjust indents"
-  ;; http://web-mode.org/
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-)
-(add-hook 'web-mode-hook  'my-web-mode-hook)
+;; -----------
+;; Web
 
 (use-package json-mode
              :mode "\\.json\\'"
@@ -236,10 +198,12 @@
              )
 
 (use-package web-mode
-;             :mode (("\\.jsx\\'" . web-mode ))
+             :mode (("\\.jsx\\'" . web-mode ))
              :mode (("\\.html\\'" . web-mode ))
              :config
-             (add-hook 'web-mode-hook  'my-web-mode-hook)
+             (setq web-mode-markup-indent-offset 2)
+             (setq web-mode-css-indent-offset 2)
+             (setq web-mode-code-indent-offset 2)
              (flycheck-add-mode 'javascript-eslint 'web-mode)
              )
 ;; -------------
@@ -249,6 +213,15 @@
              (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
              (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
              :ensure t)
+
+;; ---------
+;; Docker
+(use-package dockerfile-mode
+  :mode "Dockerfile\\'")
+
+(use-package docker
+  :commands (docker-ps))
+
 ;; ---------
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
@@ -258,20 +231,7 @@
 
 ;; ----------
 ;; Global Mappings
-(global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
-(global-set-key (kbd "C-x C-d") 'helm-browse-project)
-;(global-set-key (kbd "C-x g") 'magit-status)
-;(global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
 
-(use-package magit
-             :commands (magit-status magit-dispatch-popup)
-             :init
-             (bind-key "C-x g" 'magit-status)
-             (bind-key "C-x M-g" 'magit-dispatch-popup)
-             :config
-             (use-package evil-magit)
-             (require 'evil-magit)
-             )
 
 ;; ----------
 (provide 'emacs)
