@@ -239,11 +239,12 @@ map <leader>et :tabe %%
 nmap <leader>v :tabedit $MYVIMRC<CR>
 
 "
-" Use ag in unite grep source.
+" Use pt in unite grep source.
 let g:unite_source_grep_max_candidates = 200
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '-i --vimgrep --hidden --ignore ''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_command = 'pt'
+let g:unite_source_grep_default_opts = '--nogroup --nocolor'
 let g:unite_source_grep_recursive_opt = ''
+let g:unite_source_grep_encoding = 'utf-8'
 
 "
 " Use start insert by default.
