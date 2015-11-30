@@ -212,8 +212,12 @@
              :config
              (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
              (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
-             :ensure t)
+             )
 
+;; -------------
+(use-package powershell
+             :mode (("\\.ps1\\'" . powershell-mode ))
+             )
 ;; ---------
 ;; Docker
 (use-package dockerfile-mode
