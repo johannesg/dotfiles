@@ -95,7 +95,9 @@
   )
 
 ;; ------------
-(use-package pt)
+(use-package pt
+  :commands (pt-regexp)
+  :config)
 
 ;; ------------
 ;; Powerline
@@ -111,7 +113,10 @@
 ;; Helm
 (use-package helm
   :config
-  (use-package helm-ls-git)
+  (use-package helm-ls-git
+    :commands (helm-ls-git-ls)
+    :config
+    )
   (helm-mode t)
   (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
   (global-set-key (kbd "C-x C-d") 'helm-browse-project)
@@ -119,6 +124,7 @@
 
 
 (use-package auto-complete
+  :defer t
   :config
   (ac-config-default)
 )
@@ -128,6 +134,7 @@
 ;; http://www.flycheck.org/manual/latest/index.html
 
 (use-package flycheck
+  :defer t
   :config
   ;; turn on flychecking globally
   (add-hook 'after-init-hook #'global-flycheck-mode)
@@ -227,6 +234,12 @@
 (use-package docker
   :commands (docker-ps))
 
+(use-package neotree
+  :commands (neotree-toggle)
+  :init
+  (global-set-key [f8] 'neotree-toggle)
+  :config
+  )
 ;; ---------
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
