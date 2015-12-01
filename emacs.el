@@ -64,6 +64,7 @@
 (use-package evil
   :init
   (setq evil-want-C-u-scroll t)
+  (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode t)
   )
