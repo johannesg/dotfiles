@@ -43,7 +43,7 @@
 ;(require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
-;(setq use-package-verbose t)
+(setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
 (global-auto-revert-mode t)
@@ -94,6 +94,11 @@
   (evil-jumper-mode t)
   )
 
+(use-package evil-commentary
+  :config
+  (evil-commentary-mode)
+  )
+
 ;; ------------
 (use-package pt
   :commands (pt-regexp)
@@ -137,22 +142,19 @@
   :defer t
   :config
   ;; turn on flychecking globally
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+  ;(add-hook 'after-init-hook #'global-flycheck-mode)
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(json-jsonlist)))
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
   )
 
 ;; ----------
 ;; Go
 
-(defun my-go-mode-hook ()
-  ; Use goimports instead of go-fmt
-  (setq gofmt-command "goimports")
-  ; Call gofmt before save
-  (add-hook 'before-save-hook 'gofmt-before-save)
-
-  ;; (if (not (string-match "go" compile-command))
-  ;;     (set (make-local-variable 'compile-command)
-  ;;          "go build -v && go test -v && go vet")) ; godef jump key binding
-  (local-set-key (kbd "M-.") 'godef-jump))
 
   ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
@@ -163,13 +165,24 @@
              (bind-key "C-x M-g" 'magit-dispatch-popup)
              :config
              (use-package evil-magit)
-             (require 'evil-magit)
              )
 
 (use-package go-mode
              :mode "\\.go\\'"
              :config
-             (add-hook 'go-mode-hook 'my-go-mode-hook)
+             (add-hook 'go-mode-hook (lambda ()
+                                        ; Use goimports instead of go-fmt
+                                       (setq gofmt-command "goimports")
+                                        ; Call gofmt before save
+                                       (add-hook 'before-save-hook 'gofmt-before-save)
+
+                                       ;; (if (not (string-match "go" compile-command))
+                                       ;;     (set (make-local-variable 'compile-command)
+                                       ;;          "go build -v && go test -v && go vet")) ; godef jump key binding
+                                       (local-set-key (kbd "M-.") 'godef-jump)
+                                       (flycheck-mode)
+                                       )
+                       )
              (use-package go-autocomplete)
 ;             (use-package go-dlv)
              (use-package go-rename)
@@ -192,27 +205,28 @@
 (use-package json-mode
              :mode "\\.json\\'"
              :config 
-             (setq-default flycheck-disabled-checkers
-                           (append flycheck-disabled-checkers
-                                   '(json-jsonlist)))
              )
 
 (use-package js2-mode
              :mode (( "\\.js\\'" . js2-mode ))
              :config
-             (setq-default flycheck-disabled-checkers
-                           (append flycheck-disabled-checkers
-                                   '(javascript-jshint)))
+             (add-hook 'js2-mode-hook (lambda()
+                                        (flycheck-mode)
+                                        )
+                       )
              )
 
 (use-package web-mode
              :mode (("\\.jsx\\'" . web-mode ))
              :mode (("\\.html\\'" . web-mode ))
              :config
+             (add-hook 'web-mode-hook (lambda()
+                                        (flycheck-mode)
+                                        )
+                       )
              (setq web-mode-markup-indent-offset 2)
              (setq web-mode-css-indent-offset 2)
              (setq web-mode-code-indent-offset 2)
-             (flycheck-add-mode 'javascript-eslint 'web-mode)
              )
 ;; -------------
 (use-package elm-mode
@@ -234,12 +248,13 @@
 (use-package docker
   :commands (docker-ps))
 
-(use-package neotree
-  :commands (neotree-toggle)
-  :init
-  (global-set-key [f8] 'neotree-toggle)
-  :config
-  )
+;(use-package neotree
+;  :commands (neotree-toggle)
+;  :init
+;  (global-set-key [f8] 'neotree-toggle)
+;  :config
+;  )
+
 ;; ---------
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
