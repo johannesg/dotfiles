@@ -10,12 +10,11 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("196cc00960232cfc7e74f4e95a94a5977cb16fd28ba7282195338f68c84058ec" default)))
+    ("0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
  '(inhibit-startup-screen t)
  '(js2-basic-offset 2))
 
 (custom-set-faces
-
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -53,6 +52,23 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 ;(set-face-attribute 'default nil :font "Consolas-11.0")
+
+; Set backup dir to temp
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
+; Purge old backups
+(message "Deleting old backup files...")
+(let ((week (* 60 60 24 7))
+      (current (float-time (current-time))))
+  (dolist (file (directory-files temporary-file-directory t))
+    (when (and (backup-file-name-p file)
+               (> (- current (float-time (nth 5 (file-attributes file))))
+                  week))
+      (message "%s" file)
+      (delete-file file))))
 
 (use-package monokai-theme
   :config
@@ -172,7 +188,7 @@
              :config
              (add-hook 'go-mode-hook (lambda ()
                                         ; Use goimports instead of go-fmt
-                                       (setq gofmt-command "goimports")
+;                                       (setq gofmt-command "goimports")
                                         ; Call gofmt before save
                                        (add-hook 'before-save-hook 'gofmt-before-save)
 

@@ -1,9 +1,15 @@
 
 _GOPATH=$GOPATH
 
-function gopath {
+function gopath_old {
   export GOPATH=$_GOPATH:`pwd`
   export GOPATH=$_GOPATH:`pwd`:`pwd`/vendor
+  echo "Setting GOPATH to $GOPATH"
+}
+
+function gopath {
+  export GOPATH=`pwd`
+  export GO15VENDOREXPERIMENT=1
   echo "Setting GOPATH to $GOPATH"
 }
 
@@ -24,4 +30,6 @@ function update_gotools {
   go get -u github.com/gogo/protobuf/proto
   go get -u github.com/gogo/protobuf/protoc-gen-gogo
   go get -u github.com/gogo/protobuf/gogoproto
+  echo "govendor"
+  go get -u github.com/kardianos/govendor
 }
