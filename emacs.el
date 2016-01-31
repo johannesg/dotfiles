@@ -10,7 +10,7 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
+    ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
  '(inhibit-startup-screen t)
  '(js2-basic-offset 2))
 
@@ -145,10 +145,15 @@
 
 
 (use-package auto-complete
-  :defer t
   :config
   (ac-config-default)
 )
+
+(use-package smartparens
+  :config
+  (use-package evil-smartparens)
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+  )
 
 ;; ----------
 ;; Flycheck
@@ -250,6 +255,17 @@
              :config
              (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
              (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
+             )
+
+(use-package clojure-mode
+             :mode (("\\.clj\\'" . clojure-mode ))
+             :config
+             (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+             )
+
+(use-package cider
+             :commands (cider-jack-in)
+             :config
              )
 
 ;; -------------
