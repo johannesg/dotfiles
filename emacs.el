@@ -26,20 +26,25 @@
 ;;; package init
 (require 'package)
 
+(add-to-list 'load-path (concat user-emacs-directory "config"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
-;(setq package-enable-at-startup nil)
+(setq package-enable-at-startup nil)
 
 ;; Activate installed packages
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
 
 ;; ----------
 ;; Misc
 (eval-when-compile
   (require 'use-package))
-;(require 'diminish)                ;; if you use :diminish
+(require 'diminish)                ;; if you use :diminish
 (require 'bind-key)                ;; if you use any :bind variant
 
 (setq use-package-verbose t)
@@ -49,9 +54,15 @@
 
 (global-linum-mode)
 
+(visual-line-mode t)
+
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+
 ;(set-face-attribute 'default nil :font "Consolas-11.0")
+
+;diminish modes
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 
 ; Set backup dir to temp
 (setq backup-directory-alist
@@ -83,48 +94,47 @@
   (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode t)
-  )
+  ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
+  ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
+  ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+  ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 
-(use-package evil-leader
-  :config
-  (global-evil-leader-mode)
-  (evil-leader/set-leader ",")
-  (evil-leader/set-key
-    "f" 'helm-find-files
-    "b" 'switch-to-buffer
-    "g" 'pt-regexp)
-  )
+  (use-package evil-leader
+    :config
+    (global-evil-leader-mode)
+    (evil-leader/set-leader ",")
+    (evil-leader/set-key
+      "f" 'projectile-find-file
+      "b" 'switch-to-buffer
+      "g" 'pt-regexp))
 
-(use-package evil-easymotion
-  :config
-  (evilem-default-keybindings "SPC")
-  )
+  (use-package evil-easymotion
+    :config
+    (evilem-default-keybindings "SPC"))
 
-(use-package evil-surround
-  :config
-  (global-evil-surround-mode 1)
-  )
+  (use-package evil-surround
+    :config
+    (global-evil-surround-mode 1))
 
-(use-package evil-jumper
-  :config
-  (evil-jumper-mode t)
-  )
+  (use-package evil-jumper
+    :config
+    (evil-jumper-mode t))
 
-(use-package evil-commentary
-  :config
-  (evil-commentary-mode)
+  (use-package evil-commentary
+    :config
+    (evil-commentary-mode)
+    :diminish evil-commentary-mode)
   )
 
 ;; ------------
 (use-package pt
-  :commands (pt-regexp)
+  :commands (pt-regexp projectile-pt)
   :config)
 
 ;; ------------
 ;; Powerline
-(use-package powerline
+(use-package powerline-evil
   :config
-  (use-package powerline-evil)
   ;(powerline-default-theme)
   ;(powerline-evil-center-color-theme)
   (powerline-evil-vim-color-theme)
@@ -132,19 +142,35 @@
 
 ;; ----------
 ;; Helm
-(use-package helm
-  :config
-  (use-package helm-ls-git
-    :commands (helm-ls-git-ls)
-    :config
-    )
-  (helm-mode t)
-  (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
-  (global-set-key (kbd "C-x C-d") 'helm-browse-project)
-)
+;; (use-package helm
+;;   :config
+;;   (use-package helm-ls-git
+;;     :commands (helm-ls-git-ls)
+;;     :config
+;;     )
+;;   (helm-mode t)
+;;   (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
+;;   (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+;; )
 
+
+(use-package flx-ido
+  :config
+  (ido-mode 1)
+  (ido-everywhere 1)
+  (flx-ido-mode 1)
+  (setq ido-enable-flex-matching t)
+  (setq ido-use-faces nil)
+  )
+
+(use-package projectile
+  :config
+  (projectile-global-mode)
+  :diminish
+  )
 
 (use-package auto-complete
+  :diminish auto-complete-mode
   :config
   (ac-config-default)
 )
