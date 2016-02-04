@@ -54,7 +54,8 @@
 
 (global-linum-mode)
 
-(visual-line-mode t)
+;; (global-visual-line-mode 1)
+;; (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -86,18 +87,29 @@
   (load-theme 'monokai)
   )
 
+(use-package smooth-scrolling
+  :config
+  (setq scroll-margin 5
+        scroll-conservatively 9999
+        scroll-step 1))
 ;; ----------
 ;; Evil mode
 (use-package evil
   :init
-  (setq evil-want-C-u-scroll t)
+  ;; (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode t)
-  ;; (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-  ;; (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-  ;; (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-  ;; (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
+
+  (setq evil-emacs-state-cursor '("red" box))
+  (setq evil-normal-state-cursor '("green" box))
+  (setq evil-visual-state-cursor '("orange" box))
+  (setq evil-insert-state-cursor '("red" bar))
+  (setq evil-replace-state-cursor '("red" box))
+  (setq evil-operator-state-cursor '("red" hollow))
+
+  (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
+  (define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
 
   (use-package evil-leader
     :config
@@ -142,17 +154,17 @@
 
 ;; ----------
 ;; Helm
-;; (use-package helm
-;;   :config
-;;   (use-package helm-ls-git
-;;     :commands (helm-ls-git-ls)
-;;     :config
-;;     )
-;;   (helm-mode t)
+(use-package helm
+  :config
+  ;; (use-package helm-ls-git
+  ;;   :commands (helm-ls-git-ls)
+  ;;   :config
+  ;;   )
+  ;; (helm-mode t)
+  (global-set-key (kbd "M-x") 'helm-M-x)
 ;;   (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
 ;;   (global-set-key (kbd "C-x C-d") 'helm-browse-project)
-;; )
-
+ )
 
 (use-package flx-ido
   :config
@@ -177,9 +189,10 @@
 
 (use-package smartparens
   :config
-  (use-package evil-smartparens)
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-  )
+  (use-package evil-smartparens
+    :config
+    (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode))
 
 ;; ----------
 ;; Flycheck
@@ -251,7 +264,7 @@
 
 (use-package json-mode
              :mode "\\.json\\'"
-             :config 
+             :config
              )
 
 (use-package js2-mode
