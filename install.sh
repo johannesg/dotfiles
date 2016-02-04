@@ -20,6 +20,7 @@ ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
 ln -sfv "$DOTFILES_DIR/emacs.el" ~/.emacs
 ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
 ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
+ln -snfv "$DOTFILES_DIR/i3" ~/.i3
 
 $DOTFILES_DIR/powerline-fonts/install.sh
 
