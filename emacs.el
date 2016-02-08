@@ -187,12 +187,26 @@
   (ac-config-default)
 )
 
-(use-package smartparens
+(use-package rainbow-delimiters
+  :commands (rainbow-delimiters-mode)
+  :diminish
   :config
-  (use-package evil-smartparens
-    :config
-    (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-strict-mode))
+  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
+
+(use-package smartparens
+  ;; :diminish smartparens-mode
+  :config
+  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
+  ;; remove quote for clojure/lisp
+  (sp-local-pair '(lisp-mode
+                   emacs-lisp-mode
+                   clojure-mode
+                   cider-repl-mode) "'" nil :actions nil)) 
+
+(use-package evil-smartparens
+  :diminish evil-smartparens-mode
+  :config
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 ;; ----------
 ;; Flycheck
@@ -299,12 +313,18 @@
 (use-package clojure-mode
              :mode (("\\.clj\\'" . clojure-mode ))
              :config
-             (add-hook 'clojure-mode-hook #'smartparens-strict-mode)
+             ;; (add-hook 'clojure-mode-hook #'paredit-mode)
+             (add-hook 'clojure-mode-hook #'smartparens-mode)
+             (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
              )
 
 (use-package cider
              :commands (cider-jack-in)
              :config
+             ;; (add-hook 'cider-repl-mode-hook #'paredit-mode)
+             (add-hook 'cider-repl-mode-hook #'smartparens-mode)
+             (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
+             (evil-set-initial-state 'cider-repl-mode 'insert)
              )
 
 ;; -------------
