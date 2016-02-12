@@ -96,7 +96,6 @@
 ;; Evil mode
 (use-package evil
   :init
-  ;; (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode t)
@@ -138,10 +137,14 @@
     :diminish evil-commentary-mode)
   )
 
+(use-package rainbow-mode)
+
 ;; ------------
 (use-package pt
   :commands (pt-regexp projectile-pt)
-  :config)
+  :config
+  '(evil-set-initial-state 'pt-search-mode 'emacs)
+  )
 
 ;; ------------
 ;; Powerline
@@ -326,6 +329,13 @@
              (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
              (evil-set-initial-state 'cider-repl-mode 'insert)
              )
+
+(use-package csharp-mode
+  :mode (("\\.cs\\'" . csharp-mode))
+  :config
+  (add-hook 'csharp-mode-hook #'smartparens-mode)
+  (add-hook 'csharp-mode-hook #'rainbow-delimiters-mode)
+  )
 
 ;; -------------
 (use-package powershell
