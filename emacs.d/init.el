@@ -26,7 +26,8 @@
 ;;; package init
 (require 'package)
 
-(add-to-list 'load-path (concat user-emacs-directory "config"))
+;; (add-to-list 'load-path (concat user-emacs-directory "config"))
+(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -191,8 +192,8 @@
 )
 
 (use-package rainbow-delimiters
-  :commands (rainbow-delimiters-mode)
-  :diminish
+  ;; :commands (rainbow-delimiters-mode)
+  ;; :diminish
   :config
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
@@ -341,6 +342,9 @@
 (use-package powershell
              :mode (("\\.ps1\\'" . powershell-mode ))
              )
+
+(require 'init-csharp)
+
 ;; ---------
 ;; Docker
 (use-package dockerfile-mode
