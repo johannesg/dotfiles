@@ -331,13 +331,6 @@
              (evil-set-initial-state 'cider-repl-mode 'insert)
              )
 
-(use-package csharp-mode
-  :mode (("\\.cs\\'" . csharp-mode))
-  :config
-  (add-hook 'csharp-mode-hook #'smartparens-mode)
-  (add-hook 'csharp-mode-hook #'rainbow-delimiters-mode)
-  )
-
 ;; -------------
 (use-package powershell
              :mode (("\\.ps1\\'" . powershell-mode ))
