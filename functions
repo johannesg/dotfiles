@@ -1,6 +1,14 @@
 
 _GOPATH=$GOPATH
 
+function em() {
+   emacsclient -n $1
+}
+
+function emc() {
+   emacsclient -n -c $1
+}
+
 function gopath_old {
   export GOPATH=$_GOPATH:`pwd`
   export GOPATH=$_GOPATH:`pwd`:`pwd`/vendor
@@ -32,4 +40,6 @@ function update_gotools {
   go get -u github.com/gogo/protobuf/gogoproto
   echo "govendor"
   go get -u github.com/kardianos/govendor
+  echo "godef"
+  go get -u github.com/rogpeppe/godef
 }
