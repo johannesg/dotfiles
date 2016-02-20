@@ -1,3 +1,9 @@
 vim/bundle
 vim/.netrwhist
 tmux/plugins
+emacs.d/elpa
+emacs.d/auto-save-list
+emacs.d/server
+emacs.d/ido.last
+emacs.d/ac-comphist.dat
+emacs.d/projectile*

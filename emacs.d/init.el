@@ -26,7 +26,8 @@
 ;;; package init
 (require 'package)
 
-(add-to-list 'load-path (concat user-emacs-directory "config"))
+;; (add-to-list 'load-path (concat user-emacs-directory "config"))
+(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -96,7 +97,6 @@
 ;; Evil mode
 (use-package evil
   :init
-  ;; (setq evil-want-C-u-scroll t)
   (setq evil-want-fine-undo 'fine)
   :config
   (evil-mode t)
@@ -138,10 +138,14 @@
     :diminish evil-commentary-mode)
   )
 
+(use-package rainbow-mode)
+
 ;; ------------
 (use-package pt
   :commands (pt-regexp projectile-pt)
-  :config)
+  :config
+  '(evil-set-initial-state 'pt-search-mode 'emacs)
+  )
 
 ;; ------------
 ;; Powerline
@@ -188,8 +192,8 @@
 )
 
 (use-package rainbow-delimiters
-  :commands (rainbow-delimiters-mode)
-  :diminish
+  ;; :commands (rainbow-delimiters-mode)
+  ;; :diminish
   :config
   (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
@@ -310,27 +314,15 @@
              (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
              )
 
-(use-package clojure-mode
-             :mode (("\\.clj\\'" . clojure-mode ))
-             :config
-             ;; (add-hook 'clojure-mode-hook #'paredit-mode)
-             (add-hook 'clojure-mode-hook #'smartparens-mode)
-             (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-             )
-
-(use-package cider
-             :commands (cider-jack-in)
-             :config
-             ;; (add-hook 'cider-repl-mode-hook #'paredit-mode)
-             (add-hook 'cider-repl-mode-hook #'smartparens-mode)
-             (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
-             (evil-set-initial-state 'cider-repl-mode 'insert)
-             )
 
 ;; -------------
 (use-package powershell
              :mode (("\\.ps1\\'" . powershell-mode ))
              )
+
+(require 'init-clojure)
+(require 'init-csharp)
+
 ;; ---------
 ;; Docker
 (use-package dockerfile-mode

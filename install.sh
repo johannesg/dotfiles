@@ -17,7 +17,7 @@ ln -sfv "$DOTFILES_DIR/gitignore_global" ~/.gitignore_global
 ln -sfv "$DOTFILES_DIR/agignore" ~/.agignore
 ln -snfv "$DOTFILES_DIR/vim" ~/.vim
 ln -sfv "$DOTFILES_DIR/vimrc" ~/.vimrc
-ln -sfv "$DOTFILES_DIR/emacs.el" ~/.emacs
+ln -snfv "$DOTFILES_DIR/emacs.d" ~/.emacs.d
 ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
 ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 ln -snfv "$DOTFILES_DIR/i3" ~/.i3
