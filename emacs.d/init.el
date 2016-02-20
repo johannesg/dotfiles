@@ -8,6 +8,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(cider-cljs-lein-repl
+   "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
  '(custom-safe-themes
    (quote
     ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
@@ -186,9 +188,10 @@
   )
 
 (use-package auto-complete
+  :commands (auto-complete-mode)
   :diminish auto-complete-mode
-  :config
-  (ac-config-default)
+  ;; :config
+  ;; (ac-config-default)
 )
 
 (use-package rainbow-delimiters
@@ -319,6 +322,9 @@
 (use-package powershell
              :mode (("\\.ps1\\'" . powershell-mode ))
              )
+
+(use-package company
+  :commands (company-mode))
 
 (require 'init-clojure)
 (require 'init-csharp)
