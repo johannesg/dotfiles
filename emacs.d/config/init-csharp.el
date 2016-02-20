@@ -33,6 +33,10 @@
   (evil-define-key 'normal omnisharp-mode-map
     (kbd ",ra")
     (lambda() (interactive) (omnisharp-unit-test "all")))
+
+  (add-hook 'omnisharp-mode-hook (lambda ()
+                                   (local-set-key (kbd "C-S-b") 'omnisharp-build-in-emacs)
+                                   ))
   )
 
 (use-package csharp-mode
