@@ -22,6 +22,10 @@ ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
 ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 ln -snfv "$DOTFILES_DIR/i3" ~/.i3
 
+mkdir -p "~/.lein"
+
+ln -snfv "$DOTFILES_DIR/lein/profiles.clj" ~/.lein/profiles.clj
+
 $DOTFILES_DIR/powerline-fonts/install.sh
 
 if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install.osx.sh" ]; then

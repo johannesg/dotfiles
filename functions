@@ -1,3 +1,4 @@
+#!/bin/bash
 
 _GOPATH=$GOPATH
 
@@ -7,6 +8,10 @@ function em() {
 
 function emc() {
    emacsclient -n -c $1
+}
+
+function flux() {
+    xflux -l 58 -g 13
 }
 
 function gopath_old {
