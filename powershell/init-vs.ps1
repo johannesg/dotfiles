@@ -20,7 +20,7 @@ function VsVars32($version = "14.0")
     $BatchFile = [System.IO.Path]::Combine($VsToolsDir, "vsvars32.bat")
     Get-Batchfile $BatchFile
     [System.Console]::Title = "Visual Studio " + $version + " Windows Powershell"
-    Set-ConsoleIcon "C:\Users\johannes\Documents\WindowsPowerShell\vspowershell.ico" | Out-Null
+    # Set-ConsoleIcon "C:\Users\johannes\Documents\WindowsPowerShell\vspowershell.ico" | Out-Null
 }
 
 # Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
