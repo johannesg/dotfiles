@@ -53,94 +53,11 @@
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
-(global-auto-revert-mode t)
+(server-mode)
 
-(global-linum-mode)
+(load "editor.el")
 
-;; (global-visual-line-mode 1)
-;; (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
-
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 2)
-
-;(set-face-attribute 'default nil :font "Consolas-11.0")
-
-;diminish modes
-(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
-
-; Set backup dir to temp
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
-; Purge old backups
-(message "Deleting old backup files...")
-(let ((week (* 60 60 24 7))
-      (current (float-time (current-time))))
-  (dolist (file (directory-files temporary-file-directory t))
-    (when (and (backup-file-name-p file)
-               (> (- current (float-time (nth 5 (file-attributes file))))
-                  week))
-      (message "%s" file)
-      (delete-file file))))
-
-(use-package monokai-theme
-  :config
-  (load-theme 'monokai)
-  )
-
-(use-package smooth-scrolling
-  :config
-  (setq scroll-margin 5
-        scroll-conservatively 9999
-        scroll-step 1))
-;; ----------
-;; Evil mode
-(use-package evil
-  :init
-  (setq evil-want-fine-undo 'fine)
-  :config
-  (evil-mode t)
-
-  (setq evil-emacs-state-cursor '("red" box))
-  (setq evil-normal-state-cursor '("green" box))
-  (setq evil-visual-state-cursor '("orange" box))
-  (setq evil-insert-state-cursor '("red" bar))
-  (setq evil-replace-state-cursor '("red" box))
-  (setq evil-operator-state-cursor '("red" hollow))
-
-  (define-key evil-normal-state-map (kbd "C-j") 'evil-scroll-down)
-  (define-key evil-normal-state-map (kbd "C-k") 'evil-scroll-up)
-
-  (use-package evil-leader
-    :config
-    (global-evil-leader-mode)
-    (evil-leader/set-leader ",")
-    (evil-leader/set-key
-      "f" 'projectile-find-file
-      "b" 'switch-to-buffer
-      "g" 'pt-regexp))
-
-  (use-package evil-easymotion
-    :config
-    (evilem-default-keybindings "SPC"))
-
-  (use-package evil-surround
-    :config
-    (global-evil-surround-mode 1))
-
-  (use-package evil-jumper
-    :config
-    (evil-jumper-mode t))
-
-  (use-package evil-commentary
-    :config
-    (evil-commentary-mode)
-    :diminish evil-commentary-mode)
-  )
-
-(use-package rainbow-mode)
+(load "init-evil.el")
 
 ;; ------------
 (use-package pt
@@ -155,8 +72,7 @@
   :config
   ;(powerline-default-theme)
   ;(powerline-evil-center-color-theme)
-  (powerline-evil-vim-color-theme)
-)
+  (powerline-evil-vim-color-theme))
 
 ;; ----------
 ;; Helm
@@ -189,7 +105,7 @@
 
 (use-package auto-complete
   :commands (auto-complete-mode)
-  :diminish auto-complete-mode
+  ;; :diminish auto-complete-mode
   ;; :config
   ;; (ac-config-default)
 )
@@ -198,22 +114,7 @@
   ;; :commands (rainbow-delimiters-mode)
   ;; :diminish
   :config
-  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
-
-(use-package smartparens
-  ;; :diminish smartparens-mode
-  :config
-  (add-hook 'emacs-lisp-mode-hook #'smartparens-mode)
-  ;; remove quote for clojure/lisp
-  (sp-local-pair '(lisp-mode
-                   emacs-lisp-mode
-                   clojure-mode
-                   cider-repl-mode) "'" nil :actions nil)) 
-
-(use-package evil-smartparens
-  :diminish evil-smartparens-mode
-  :config
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+  )
 
 ;; ----------
 ;; Flycheck
@@ -326,8 +227,10 @@
 (use-package company
   :commands (company-mode))
 
-(require 'init-clojure)
-(require 'init-csharp)
+(load "init-elisp.el")
+
+(load "init-clojure.el")
+(load "init-csharp.el")
 
 ;; ---------
 ;; Docker
