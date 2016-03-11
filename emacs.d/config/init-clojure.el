@@ -5,7 +5,8 @@
   :config
   ;; (add-hook 'clojure-mode-hook #'paredit-mode)
   (add-hook 'clojure-mode-hook (lambda ()
-                                 (paredit-mode)
+                                 (smartparens-strict-mode)
+                                 (evil-smartparens-mode)
                                  (rainbow-delimiters-mode)
                                  (company-mode)
                                  (aggressive-indent-mode))))

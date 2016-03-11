@@ -37,4 +37,7 @@
     :config
     (evil-commentary-mode)
     :diminish evil-commentary-mode)
+
+  (use-package evil-smartparens
+    :commands (evil-smartparens-mode))
   )
