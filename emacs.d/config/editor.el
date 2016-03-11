@@ -8,6 +8,8 @@
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 
+(windmove-default-keybindings)
+
 ;; When you visit a file, point goes to the last place where it
 ;; was when you previously visited the same file.
 ;; http://www.emacswiki.org/emacs/SavePlace
@@ -53,9 +55,18 @@
 (use-package aggressive-indent 
   :commands (aggressive-indent-mode))
 
+(use-package rainbow-mode)
+
 (use-package smartparens
   :commands (smartparens-mode smartparens-strict-mode)
   :config
+  
+  ;; remove quote for clojure/lisp
+  (sp-local-pair '(lisp-mode
+                   emacs-lisp-mode
+                   clojure-mode
+                   cider-repl-mode) "'" nil :actions nil)
+  
   (bind-keys
    :map smartparens-mode-map
    ("C-M-a" . sp-beginning-of-sexp)
@@ -96,13 +107,11 @@
    ;; ("M-]" . sp-unwrap-sexp)
 
    ;; ("C-x C-t" . sp-transpose-hybrid-sexp)
-   ;; ("C-c ("  . wrap-with-parens)
-   ;; ("C-c ["  . wrap-with-brackets)
-   ;; ("C-c {"  . wrap-with-braces)
-   ;; ("C-c '"  . wrap-with-single-quotes)
-   ;; ("C-c \"" . wrap-with-double-quotes)
-   ;; ("C-c _"  . wrap-with-underscores)
-   ;; ("C-c `"  . wrap-with-back-quotes)
-   )
-  
-  (use-package rainbow-mode))
+   ("C-c ("  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "(")))
+   ("C-c ["  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "[")))
+   ("C-c {"  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "{")))
+   ("C-c '"  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "'")))
+   ("C-c \"" . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "\"")))
+   ("C-c _"  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "_")))
+   ("C-c `"  . (lambda (&optional arg) (interactive "P") (sp-wrap-with-pair "`")))
+   ))
