@@ -62,11 +62,23 @@
   :config
   
   ;; remove quote for clojure/lisp
-  (sp-local-pair '(lisp-mode
-                   emacs-lisp-mode
-                   clojure-mode
-                   cider-repl-mode) "'" nil :actions nil)
-  
+  ;; (sp-local-pair '(lisp-mode
+  ;;                  emacs-lisp-mode
+  ;;                  clojure-mode
+  ;;                  cider-repl-mode) "'" nil :actions nil)
+
+  ;; emacs is lisp hacking enviroment, so we set up some most common
+  ;; lisp modes too
+  (sp-with-modes sp--lisp-modes
+    ;; disable ', it's the quote character!
+    (sp-local-pair "'" nil :actions nil)
+    ;; also only use the pseudo-quote inside strings where it serve as
+    ;; hyperlink.
+    (sp-local-pair "`" "'" :when '(sp-in-string-p))
+    (sp-local-pair "(" nil
+                   :pre-handlers '(live-sp-add-space-before-sexp-insertion)
+                   :post-handlers '(live-sp-add-space-after-sexp-insertion)))
+
   (bind-keys
    :map smartparens-mode-map
    ("C-M-a" . sp-beginning-of-sexp)
