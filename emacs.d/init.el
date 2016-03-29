@@ -12,9 +12,12 @@
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
  '(custom-safe-themes
    (quote
-    ("38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
+    ("6c62b1cd715d26eb5aa53843ed9a54fc2b0d7c5e0f5118d4efafa13d7715c56e" "38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
  '(inhibit-startup-screen t)
- '(js2-basic-offset 2))
+ '(js2-basic-offset 2)
+ '(package-selected-packages
+   (quote
+    (web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

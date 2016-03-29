@@ -43,7 +43,7 @@
   :mode "\\.cs\\'"
   :config
   (add-hook 'csharp-mode-hook #'smartparens-mode)
-  (add-hook 'csharp-mode-hook #'omnisharp-mode)
+  ;; (add-hook 'csharp-mode-hook #'omnisharp-mode)
   )
 
 (provide 'init-csharp)
