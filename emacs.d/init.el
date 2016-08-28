@@ -12,7 +12,7 @@
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
  '(custom-safe-themes
    (quote
-    ("6df30cfb75df80e5808ac1557d5cc728746c8dbc9bc726de35b15180fa6e0ad9" "6c62b1cd715d26eb5aa53843ed9a54fc2b0d7c5e0f5118d4efafa13d7715c56e" "38ba6a938d67a452aeb1dada9d7cdeca4d9f18114e9fc8ed2b972573138d4664" "0fb6369323495c40b31820ec59167ac4c40773c3b952c264dd8651a3b704f6b5" default)))
+    ("c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
  '(inhibit-startup-screen t)
  '(js2-basic-offset 2)
  '(package-selected-packages
