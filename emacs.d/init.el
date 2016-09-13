@@ -12,12 +12,12 @@
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
  '(custom-safe-themes
    (quote
-    ("c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
+    ("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" "c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
  '(inhibit-startup-screen t)
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-    (yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
+    (fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -236,6 +236,7 @@
 
 (load "init-clojure.el")
 (load "init-csharp.el")
+(load "init-fsharp.el")
 
 ;; ---------
 ;; Docker
