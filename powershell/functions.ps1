@@ -102,6 +102,24 @@ function purge-dir
   robocopy /purge $tempDir $dir
 }
 
+function paket
+{
+    if (Test-Path ".paket\paket.exe") {
+        .paket\paket.exe $args
+    } else {
+        Write-Host "paket not found"
+    }
+}
+
+function fake
+{
+    if (Test-Path "packages\FAKE\tools\FAKE.exe") {
+        packages\FAKE\tools\FAKE.exe $args
+    } else {
+        Write-Host "fake not found"
+    }
+}
+
 Set-Alias eh Start-ExplorerHere
 Set-Alias x Stop-Host
 Set-Alias nest New-NestedHost
