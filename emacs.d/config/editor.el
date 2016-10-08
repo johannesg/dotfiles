@@ -26,9 +26,11 @@
 
 ; Set backup dir to temp
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
+      `((".*" . ,temporary-file-directory )))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+(setq create-lockfiles nil)
 
 ; Purge old backups
 (message "Deleting old backup files...")
