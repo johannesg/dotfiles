@@ -1,9 +1,29 @@
 [user]
-	email = johannesgu@gmail.com
-	name = Johannes Gustafsson
+  email = johannesgu@gmail.com
+  name = Johannes Gustafsson
 [push]
-	default = simple
+  default = simple
 [core]
-	excludesfile = ~/.gitignore_global
+  autocrlf = true
+  whitespace = cr-at-eol #Get rid of ^M at the end of rows when diff.
+  excludesfile = ~/.gitignore_global
 [credential]
-	helper = cache
+  helper = cache
+[log]
+  date = relative
+[format] # Set so e.g. git log will also use the format without the --pretty flag.
+  pretty = %C(yellow bold)%h %C(cyan dim)%>(12)%ad %C(green dim)%<(20)%aN%C(red)%d %Creset%s
+[pretty]
+  myformat = %C(yellow bold)%h %C(cyan dim)%>(12)%ad %C(green dim)%<(20)%aN%C(red)%d %Creset%s
+[alias]
+  st = status
+  br = branch
+  ch = checkout
+  last = log -1 HEAD
+  lt = log --oneline --pretty=myformat --grep
+  lta = "!f() { git log --oneline --pretty=myformat --grep=$1 --author=$2; }; f"
+  lb = log --walk-reflogs
+  lastw = log --since=1.weeks --oneline
+  lastwa = log --since=1.weeks --oneline --author
+  rcp = "!f() { git log --since=$1.$2; }; f"
+  rcn = "!f() { git log -n $1; }; f"
