@@ -144,37 +144,14 @@
   ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
 (use-package magit
-             :commands (magit-status magit-dispatch-popup)
-             :init
-             (bind-key "C-x g" 'magit-status)
-             (bind-key "C-x M-g" 'magit-dispatch-popup)
-             :config
-             (use-package evil-magit)
-             )
+  :commands (magit-status magit-dispatch-popup)
+  :init
+  (bind-key "C-x g" 'magit-status)
+  (bind-key "C-x M-g" 'magit-dispatch-popup)
+  :config
+  (use-package evil-magit)
+  )
 
-(use-package go-mode
-             :mode "\\.go\\'"
-             :config
-             (add-hook 'go-mode-hook (lambda ()
-                                        ; Use goimports instead of go-fmt
-;                                       (setq gofmt-command "goimports")
-                                        ; Call gofmt before save
-                                       (add-hook 'before-save-hook 'gofmt-before-save)
-
-                                       ;; (if (not (string-match "go" compile-command))
-                                       ;;     (set (make-local-variable 'compile-command)
-                                       ;;          "go build -v && go test -v && go vet")) ; godef jump key binding
-                                       (local-set-key (kbd "M-.") 'godef-jump)
-                                       (flycheck-mode)
-                                       )
-                       )
-             (use-package go-autocomplete)
-;             (use-package go-dlv)
-             (use-package go-rename)
-             ; (require 'go-mode-autoloads)
-             ; (require 'go-autocomplete)
-             ; (require 'auto-complete-config)
-             )
 
 ;; ------------
 ;; protobuf
@@ -202,25 +179,17 @@
              )
 
 (use-package web-mode
-             :mode (("\\.jsx\\'" . web-mode ))
-             :mode (("\\.html\\'" . web-mode ))
-             :config
-             (add-hook 'web-mode-hook (lambda()
-                                        (flycheck-mode)
-                                        )
-                       )
-             (setq web-mode-markup-indent-offset 2)
-             (setq web-mode-css-indent-offset 2)
-             (setq web-mode-code-indent-offset 2)
-             )
-;; -------------
-(use-package elm-mode
-             :mode (("\\.elm\\'" . elm-mode ))
-             :config
-             (add-hook 'elm-mode-hook #'elm-oracle-setup-completion)
-             (add-hook 'elm-mode-hook #'elm-oracle-setup-ac)
-             )
-
+  :mode (("\\.jsx\\'" . web-mode ))
+  :mode (("\\.html\\'" . web-mode ))
+  :config
+  (add-hook 'web-mode-hook (lambda()
+                             (flycheck-mode)
+                             )
+            )
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  )
 
 ;; -------------
 (use-package powershell
@@ -237,28 +206,30 @@
 (load "init-clojure.el")
 (load "init-csharp.el")
 (load "init-fsharp.el")
+;; (load "init-go.el")
+;; (load "init-elm.el")
 
 ;; ---------
 ;; Docker
 (use-package dockerfile-mode
   :mode "Dockerfile\\'")
 
-(use-package docker
-  :commands (docker-ps))
+;; (use-package docker
+;;   :commands (docker-ps))
 
-;(use-package neotree
-;  :commands (neotree-toggle)
-;  :init
-;  (global-set-key [f8] 'neotree-toggle)
-;  :config
-;  )
+;; (use-package neotree
+;;   :commands (neotree-toggle)
+;;   :init
+;;   (global-set-key [f8] 'neotree-toggle)
+;;   :config
+;;   )
 
 ;; ---------
 ;; https://github.com/purcell/exec-path-from-shell
 ;; only need exec-path-from-shell on OSX
 ;; this hopefully sets up path and other vars better
-;(when (memq window-system '(mac ns))
-;  (exec-path-from-shell-initialize))
+;; (when (memq window-system '(mac ns))
+;;   (exec-path-from-shell-initialize))
 
 ;; ----------
 ;; Global Mappings
