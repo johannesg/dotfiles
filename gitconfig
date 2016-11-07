@@ -4,8 +4,8 @@
 [push]
   default = simple
 [core]
-  autocrlf = true
-  whitespace = cr-at-eol #Get rid of ^M at the end of rows when diff.
+#  autocrlf = true
+#  whitespace = cr-at-eol #Get rid of ^M at the end of rows when diff.
   excludesfile = ~/.gitignore_global
 [credential]
   helper = cache
