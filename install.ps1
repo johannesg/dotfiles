@@ -5,7 +5,7 @@ $DotFiles = $PSScriptRoot
 & cmd.exe /c mklink /D $home\.vim $DotFiles\vim
 & cmd.exe /c mklink /D $home\.agignore $DotFiles\agignore
 & cmd.exe /c mklink /D $home\.emacs.d $DotFiles\emacs.d
-& cmd.exe /c mklink $home\.gitconfig $DotFiles\gitconfig
+# & cmd.exe /c mklink $home\.gitconfig $DotFiles\gitconfig
 & cmd.exe /c mklink $home\.gitignore_global $DotFiles\gitignore_global
 
 if (!(Test-Path $home\.lein)) { mkdir $home\.lein }
