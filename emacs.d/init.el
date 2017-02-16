@@ -17,7 +17,7 @@
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-    (nginx-mode php-mode fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
+    (clojure-mode magit flycheck auto-complete evil smartparens nginx-mode php-mode fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
