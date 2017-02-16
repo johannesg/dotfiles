@@ -12,12 +12,12 @@
    "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
  '(custom-safe-themes
    (quote
-    ("a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" "c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
+    ("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" "c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
  '(inhibit-startup-screen t)
  '(js2-basic-offset 2)
  '(package-selected-packages
    (quote
-    (fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
+    (nginx-mode php-mode fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -201,6 +201,9 @@
 (use-package company
   :commands (company-mode))
 
+(use-package nginx-mode
+  :commands (nginx-mode))
+
 (load "init-elisp.el")
 
 (load "init-clojure.el")
@@ -208,6 +211,7 @@
 (load "init-fsharp.el")
 ;; (load "init-go.el")
 ;; (load "init-elm.el")
+(load "init-php.el")
 
 ;; ---------
 ;; Docker
