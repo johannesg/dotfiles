@@ -76,7 +76,7 @@ function em {
 
   PROCESS {
     if (!(Test-Path $files)) {
-      & emacsclientw -na runemacs $files
+      & emacsclient -na runemacs $files
     }
     else {  
       gi $files | % {
