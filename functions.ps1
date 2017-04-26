@@ -1,9 +1,3 @@
-
-function em {
-    param($f)
-    emacsclient.exe -n -a "emacs" $f
-}
-
 function gopath {
     $env:GO15VENDOREXPERIMENT=1
     $env:GOPATH=$pwd

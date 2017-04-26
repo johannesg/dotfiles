@@ -120,6 +120,16 @@ function fake
     }
 }
 
+function msbuild {
+	$path = vswhere -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
+	if ($path) {
+	  $path = join-path $path 'MSBuild\15.0\Bin\MSBuild.exe'
+	  if (test-path $path) {
+		& $path $args
+	  }
+	}
+}
+
 Set-Alias eh Start-ExplorerHere
 Set-Alias x Stop-Host
 Set-Alias nest New-NestedHost
