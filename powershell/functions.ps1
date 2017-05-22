@@ -81,7 +81,7 @@ function em {
     else {  
       gi $files | % {
         if (!$_.PSIsContainer) {
-          & emacsclientw -na runemacs $_ 
+          & emacsclient -na runemacs $_ 
         }
       }
     }
