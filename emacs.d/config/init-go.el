@@ -21,3 +21,6 @@
                                         ; (require 'go-autocomplete)
                                         ; (require 'auto-complete-config)
   )
+
+;; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
+

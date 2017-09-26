@@ -2,65 +2,30 @@
 
 ;;; Commentary:
 
-;;; Code:
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(cider-cljs-lein-repl
-   "(do (require 'weasel.repl.websocket) (cemerick.piggieback/cljs-repl (weasel.repl.websocket/repl-env :ip \"127.0.0.1\" :port 9001)))")
- '(custom-safe-themes
-   (quote
-    ("c7a9a68bd07e38620a5508fef62ec079d274475c8f92d75ed0c33c45fbe306bc" "a800120841da457aa2f86b98fb9fd8df8ba682cebde033d7dbf8077c1b7d677a" "c59857e3e950131e0c17c65711f1812d20a54b829115b7c522672ae6ba0864cc" default)))
- '(inhibit-startup-screen t)
- '(js2-basic-offset 2)
- '(package-selected-packages
-   (quote
-    (clojure-mode magit flycheck auto-complete evil smartparens nginx-mode php-mode fsharp-mode yaml-mode web-mode use-package smooth-scrolling rainbow-mode rainbow-delimiters pt protobuf-mode projectile powershell powerline-evil omnisharp monokai-theme json-mode js2-mode helm go-mode flx-ido evil-surround evil-smartparens evil-magit evil-leader evil-jumper evil-easymotion evil-commentary elm-mode dockerfile-mode docker company cider aggressive-indent))))
+;;----------------------------------------------------------------------------
+;; Variables configured via the interactive 'customize' interface
+;;----------------------------------------------------------------------------
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-(tool-bar-mode 0)
-
-;;; package init
-(require 'package)
-
-;; (add-to-list 'load-path (concat user-emacs-directory "config"))
-(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-;(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
-
-(setq package-enable-at-startup nil)
-
-;; Activate installed packages
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
 (package-initialize)
 
-(unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
-;; ----------
-;; Misc
-(eval-when-compile
-  (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
+(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
+(defconst *is-a-mac* (eq system-type 'darwin))
 
-(setq use-package-verbose t)
-(setq use-package-always-ensure t)
+(add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
-(server-mode)
+(require 'init-package)
 
-(load "editor.el")
+(use-package better-defaults)
 
-(load "init-evil.el")
+(require 'init-editor)
 
 ;; ------------
 (use-package pt
@@ -68,14 +33,6 @@
   :config
   '(evil-set-initial-state 'pt-search-mode 'emacs)
   )
-
-;; ------------
-;; Powerline
-(use-package powerline-evil
-  :config
-  ;(powerline-default-theme)
-  ;(powerline-evil-center-color-theme)
-  (powerline-evil-vim-color-theme))
 
 ;; ----------
 ;; Helm
@@ -87,9 +44,9 @@
   ;;   )
   ;; (helm-mode t)
   (global-set-key (kbd "M-x") 'helm-M-x)
-;;   (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
-;;   (global-set-key (kbd "C-x C-d") 'helm-browse-project)
- )
+  ;;   (global-set-key (kbd "C-<f6>") 'helm-ls-git-ls)
+  ;;   (global-set-key (kbd "C-x C-d") 'helm-browse-project)
+  )
 
 (use-package flx-ido
   :config
@@ -127,7 +84,7 @@
   :defer t
   :config
   ;; turn on flychecking globally
-  ;(add-hook 'after-init-hook #'global-flycheck-mode)
+                                        ;(add-hook 'after-init-hook #'global-flycheck-mode)
   (setq-default flycheck-disabled-checkers
                 (append flycheck-disabled-checkers
                         '(json-jsonlist)))
@@ -136,12 +93,6 @@
                         '(javascript-jshint)))
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   )
-
-;; ----------
-;; Go
-
-
-  ; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
 (use-package magit
   :commands (magit-status magit-dispatch-popup)
@@ -161,35 +112,6 @@
   (use-package flycheck-protobuf)
   )
 
-;; -----------
-;; Web
-
-(use-package json-mode
-             :mode "\\.json\\'"
-             :config
-             )
-
-(use-package js2-mode
-             :mode (( "\\.js\\'" . js2-mode ))
-             :config
-             (add-hook 'js2-mode-hook (lambda()
-                                        (flycheck-mode)
-                                        )
-                       )
-             )
-
-(use-package web-mode
-  :mode (("\\.jsx\\'" . web-mode ))
-  :mode (("\\.html\\'" . web-mode ))
-  :config
-  (add-hook 'web-mode-hook (lambda()
-                             (flycheck-mode)
-                             )
-            )
-  (setq web-mode-markup-indent-offset 2)
-  (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2)
-  )
 
 ;; -------------
 (use-package powershell
@@ -204,14 +126,15 @@
 (use-package nginx-mode
   :commands (nginx-mode))
 
-(load "init-elisp.el")
+(require 'init-elisp)
 
-(load "init-clojure.el")
-(load "init-csharp.el")
-(load "init-fsharp.el")
-;; (load "init-go.el")
-;; (load "init-elm.el")
-(load "init-php.el")
+(require 'init-web)
+(require 'init-clojure)
+(require 'init-csharp)
+(require 'init-fsharp)
+;; (require 'init-go)
+;; (require 'init-elm)
+(require 'init-php)
 
 ;; ---------
 ;; Docker
@@ -239,6 +162,12 @@
 ;; Global Mappings
 
 
-;; ----------
-(provide 'emacs)
+;;;----------------------------------------------------------------------------
+;; Allow access from emacsclient
+;;----------------------------------------------------------------------------
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
+(provide 'init)
 ;;; emacs.el ends here

@@ -41,3 +41,5 @@
   (use-package evil-smartparens
     :commands (evil-smartparens-mode))
   )
+
+(provide 'init-evil)

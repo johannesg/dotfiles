@@ -5,3 +5,4 @@
             (evil-smartparens-mode)
             (rainbow-delimiters-mode)))
 
+(provide 'init-elisp)
