@@ -1,23 +1,15 @@
-;;; package --- Summary
 
-;;; Commentary:
+;; Emacs config insipirations:
+;; https://github.com/purcell/emacs.d
 
-;;----------------------------------------------------------------------------
-;; Variables configured via the interactive 'customize' interface
-;;----------------------------------------------------------------------------
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file)
   (load custom-file))
 
-(defconst *spell-check-support-enabled* nil) ;; Enable with t if you prefer
-(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-mac* (eq system-type 'darwin))
+(defconst *is-windows* (eq system-type 'windows-nt))
 
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
@@ -135,6 +127,7 @@
 ;; (require 'init-go)
 ;; (require 'init-elm)
 (require 'init-php)
+(require 'init-python)
 
 ;; ---------
 ;; Docker
@@ -167,7 +160,8 @@
 ;;----------------------------------------------------------------------------
 (require 'server)
 (unless (server-running-p)
-  (server-start))
+  (server-start)
+  (server-mode))
 
 (provide 'init)
 ;;; emacs.el ends here
