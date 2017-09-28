@@ -75,7 +75,16 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
-source $DOTFILES_DIR/homebrew
+# source $DOTFILES_DIR/homebrew
+source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
+source $DOTFILES_DIR/aliases
+source $DOTFILES_DIR/path
+source $DOTFILES_DIR/functions
+
+if [ $OS = "OSX" ]; then
+    source $DOTFILES_DIR/osx
+fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -92,15 +101,6 @@ fi
 #http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty -ixon
 #stty stop undef
-
-source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
-source $DOTFILES_DIR/aliases
-source $DOTFILES_DIR/path
-source $DOTFILES_DIR/functions
-
-if [ $OS = "OSX" ]; then
-    source $DOTFILES_DIR/osx
-fi
 
 # Nodejs
 export NVM_DIR=~/.nvm
