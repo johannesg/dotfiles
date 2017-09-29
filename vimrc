@@ -49,21 +49,21 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'ekalinin/Dockerfile.vim'
-NeoBundle 'shime/vim-livedown'
+" NeoBundle 'shime/vim-livedown'
 NeoBundle 'nginx.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make -f make_mac.mak',
-\     'linux' : 'make',
-\     'unix' : 'gmake',
-\    },
-\ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
+" NeoBundle 'mileszs/ack.vim'
+" NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'Shougo/vimproc.vim', {
+" \ 'build' : {
+" \     'windows' : 'tools\\update-dll-mingw',
+" \     'cygwin' : 'make -f make_cygwin.mak',
+" \     'mac' : 'make -f make_mac.mak',
+" \     'linux' : 'make',
+" \     'unix' : 'gmake',
+" \    },
+" \ }
+" NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/vimfiler.vim'
 
 " snippets
 if has('python')
@@ -80,30 +80,30 @@ if has('python')
 endif
 
 " javascript & htmn
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'mxw/vim-jsx'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'maksimr/vim-jsbeautify'
-let g:jsx_ext_required = 0
+" NeoBundle 'pangloss/vim-javascript'
+" NeoBundle 'mxw/vim-jsx'
+" NeoBundle 'mattn/emmet-vim'
+" NeoBundle 'leafgarland/typescript-vim'
+" NeoBundle 'maksimr/vim-jsbeautify'
+" let g:jsx_ext_required = 0
 
 " go
-NeoBundleLazy 'fatih/vim-go', {
-      \ 'autoload' : {
-      \     'filetypes' : ['go'],
-      \    },
-      \ }
+" NeoBundleLazy 'fatih/vim-go', {
+      " \ 'autoload' : {
+      " \     'filetypes' : ['go'],
+      " \    },
+      " \ }
 
 " rust
 " NeoBundle 'rust-lang/rust.vim'
 " NeoBundle 'phildawes/racer'
 
-NeoBundle 'Shougo/neocomplete.vim'
-if !has("win32")
-    " NeoBundle 'Valloric/YouCompleteMe'
-"    NeoBundle 'rhysd/vim-clang-format'
-"   NeoBundle 'edkolev/tmuxline.vim'
-endif
+" NeoBundle 'Shougo/neocomplete.vim'
+" if !has("win32")
+"     " NeoBundle 'Valloric/YouCompleteMe'
+" "    NeoBundle 'rhysd/vim-clang-format'
+" "   NeoBundle 'edkolev/tmuxline.vim'
+" endif
 
 call neobundle#end()
 filetype plugin indent on    " required
@@ -195,15 +195,15 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 " let g:ctrlp_working_path_mode = ''
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
 
 " Mappings
 let mapleader=','
@@ -240,38 +240,38 @@ nmap <leader>v :tabedit $MYVIMRC<CR>
 
 "
 " Use pt in unite grep source.
-let g:unite_source_grep_max_candidates = 200
-let g:unite_source_grep_command = 'pt'
-let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-let g:unite_source_grep_recursive_opt = ''
-let g:unite_source_grep_encoding = 'utf-8'
+" let g:unite_source_grep_max_candidates = 200
+" let g:unite_source_grep_command = 'pt'
+" let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+" let g:unite_source_grep_recursive_opt = ''
+" let g:unite_source_grep_encoding = 'utf-8'
 
 "
 " Use start insert by default.
       " \   'start_insert' : 1,
-call unite#custom#profile('default', 'context', {
-      \   'ignorecase'   : 1
-      \ })
+" call unite#custom#profile('default', 'context', {
+"       \   'ignorecase'   : 1
+"       \ })
 
 " Unite
-let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-let g:unite_source_history_yank_enable = 1
+" let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+" let g:unite_source_history_yank_enable = 1
 
-nnoremap <leader>f  :<C-u>Unite file_rec/async -start-insert<CR>
-nnoremap <leader>b  :<C-u>Unite buffer<CR>
-nnoremap <leader>y  :<C-u>Unite history/yank<CR>
-nnoremap <leader>r  :<C-u>Unite register:abcdefq<CR>
-nnoremap <leader>g  :<C-u>Unite grep:.<CR>
+" nnoremap <leader>f  :<C-u>Unite file_rec/async -start-insert<CR>
+" nnoremap <leader>b  :<C-u>Unite buffer<CR>
+" nnoremap <leader>y  :<C-u>Unite history/yank<CR>
+" nnoremap <leader>r  :<C-u>Unite register:abcdefq<CR>
+" nnoremap <leader>g  :<C-u>Unite grep:.<CR>
 
-" VimFiler
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_ignore_pattern = ['^\.git$', '^\.svn$', 'node_modules', '^\.DS_Store$']
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
+" " VimFiler
+" let g:vimfiler_as_default_explorer = 1
+" let g:vimfiler_ignore_pattern = ['^\.git$', '^\.svn$', 'node_modules', '^\.DS_Store$']
+" let g:vimfiler_tree_opened_icon = '▾'
+" let g:vimfiler_tree_closed_icon = '▸'
 
-call vimfiler#custom#profile('default', 'context', {
-      \   'explorer' : 1,
-      \   'safe' : 1
-      \ })
+" call vimfiler#custom#profile('default', 'context', {
+"       \   'explorer' : 1,
+"       \   'safe' : 1
+"       \ })
 
-nnoremap <leader>e  :<C-u>VimFilerExplorer<CR>
+" nnoremap <leader>e  :<C-u>VimFilerExplorer<CR>
