@@ -76,7 +76,6 @@ for option in autocd globstar; do
 done;
 
 # source $DOTFILES_DIR/homebrew
-source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
 source $DOTFILES_DIR/aliases
 source $DOTFILES_DIR/path
 source $DOTFILES_DIR/functions
@@ -84,8 +83,7 @@ source $DOTFILES_DIR/functions
 if [ $OS = "OSX" ]; then
     source $DOTFILES_DIR/osx
 fi
-
-
+ 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -111,3 +109,5 @@ fi
 if which pyenv > /dev/null; then
     eval "$(pyenv init -)"
 fi
+
+source $DOTFILES_DIR/shell/liquidprompt/liquidprompt

@@ -8,6 +8,9 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
+[ ! -d ~/.lein ] && mkdir ~/.lein
+[ ! -d ~/.config ] && mkdir ~/.config
+
 # Bunch of symlinks
 
 ln -sfv "$DOTFILES_DIR/bash_profile" ~/.bash_profile
@@ -22,9 +25,8 @@ ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
 ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 ln -snfv "$DOTFILES_DIR/i3" ~/.i3
 
-mkdir -p "~/.lein"
-
-ln -snfv "$DOTFILES_DIR/lein/profiles.clj" ~/.lein/profiles.clj
+ln -sfv "$DOTFILES_DIR/lein/profiles.clj" ~/.lein/profiles.clj
+ln -sfv "$DOTFILES_DIR/shell/liquidpromptrc" ~/.config/liquidpromptrc
 
 $DOTFILES_DIR/powerline-fonts/install.sh
 
