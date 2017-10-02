@@ -10,8 +10,9 @@
                              (flycheck-mode))))
 
 (use-package web-mode
-  :mode (("\\.jsx\\'" . web-mode ))
-  :mode (("\\.html\\'" . web-mode ))
+  :mode (("\\.jsx\\'" . web-mode )
+         ("\\.html\\'" . web-mode )
+         ("\\.djhtml\\'" . web-mode ))
   :config
   (add-hook 'web-mode-hook (lambda()
                              (flycheck-mode)))
