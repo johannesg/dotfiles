@@ -52,3 +52,14 @@ function update_gotools {
 function install_gcloud {
     curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
 }
+
+function install_minikube {
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && mv minikube $HOME/.local/bin/
+}
+
+function install_virtualbox {
+    echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null \
+        && wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - \
+        && sudo apt update \
+        && sudo apt install dkms virtualbox-5.1
+}

@@ -10,6 +10,7 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 [ ! -d ~/.lein ] && mkdir ~/.lein
 [ ! -d ~/.config ] && mkdir ~/.config
+[ ! -d ~/.local/bin ] && mkdir -p ~/.local/bin
 
 # Bunch of symlinks
 
