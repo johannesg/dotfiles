@@ -15,8 +15,8 @@
   (add-hook 'elpy-mode-hook (lambda ()
                               (add-hook 'before-save-hook 'elpy-format-code nil t)))
 
-  (elpy-use-ipython)
   (use-package ein)
+  ;; (elpy-use-ipython)
   )
 
 (provide 'init-python)
