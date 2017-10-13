@@ -48,3 +48,7 @@ function update_gotools {
   echo "godef"
   go get -u github.com/rogpeppe/godef
 }
+
+function install_gcloud {
+    curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
+}

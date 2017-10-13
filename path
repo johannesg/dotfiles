@@ -1,27 +1,3 @@
 #!/bin/bash
 
-# export PATH=~/.bin:$PATH
-# export PATH=$PATH:/usr/local/go/bin
-export GOPATH=~/.gocode
-# export PATH=$PATH:${GOPATH//://bin:}/bin
 
-### Added by the Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-
-paths="~/.bin
-/usr/local/go/bin
-${GOPATH//://bin:}/bin
-/usr/local/heroku/bin
-/home/linuxbrew/.linuxbrew/bin"
-
-for p in $paths
-do
-  if [ -d "$p" ]; then
-    # if [[ :$PATH: == *:"$p":* ]] ; then 
-      # echo "set path for $p"
-      export PATH=$p:$PATH
-    # fi
-  fi
-done
-
-# PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
