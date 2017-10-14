@@ -53,7 +53,10 @@
   :config
   (projectile-global-mode)
   :diminish
-  )
+  :config
+  (setq projectile-mode-line
+        '(:eval (format " Projectile[%s]"
+                        (projectile-project-name)))))
 
 (use-package auto-complete
   :commands (auto-complete-mode)

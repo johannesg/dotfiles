@@ -77,6 +77,14 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
+function _export_path {
+    [[ -d $1 ]] && export PATH=$1:$PATH
+}
+
+
+_export_path "$HOME/.local/bin"
+_export_path "/home/linuxbrew/.linuxbrew/bin"
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -97,9 +105,6 @@ function _include {
     [[ -f $1 ]] && source $1
 }
 
-function _export_path {
-    [[ -d $1 ]] && export PATH=$1:$PATH
-}
 
 # Nodejs
 if [ -d ~/.nvm ]; then
@@ -126,13 +131,19 @@ _include "$HOME/.local/google-cloud-sdk/path.bash.inc"
 # The next line enables shell command completion for gcloud.
 _include "$HOME/.local/google-cloud-sdk/completion.bash.inc"
 
-export GOPATH=~/.gocode
+if which kubectl > /dev/null; then
+    source <(kubectl completion bash)
+fi
 
-_export_path "$HOME/.local/bin"
+if which minikube > /dev/null; then
+    source <(minikube completion bash)
+fi
+
+# Go etc
+export GOPATH=~/.gocode
 _export_path "/usr/local/go/bin"
 _export_path "${GOPATH//://bin:}/bin"
 _export_path "/usr/local/heroku/bin"
-_export_path "/home/linuxbrew/.linuxbrew/bin"
 
 unset -f _include
 unset -f _export_path
