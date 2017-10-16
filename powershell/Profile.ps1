@@ -1,17 +1,14 @@
-. "~\.dotfiles\powershell\functions.ps1"
-# . "~\Documents\WindowsPowerShell\prompt.ps1"
-
-# . "~\.dotfiles\powershell\init-svn.ps1"
-# . "~\.dotfiles\powershell\init-vs.ps1"
-
-# Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-
-# DotSource the Console Icon Stuff
-# . ./Set-ConsoleIcon.ps1
-
-# Pop-Location
-
-if ($host.Name -eq 'ConsoleHost')
+if ($host.Name -ne 'ConsoleHost')
 {
-    . "~/.dotfiles/powershell/console.ps1"
+    return
+}
+
+$script:ScriptRoot = "~/.dotfiles/powershell"
+
+. $script:ScriptRoot/psreadline.ps1
+. $script:ScriptRoot/functions.ps1
+
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
 }

@@ -140,9 +140,9 @@ if has('gui_running')
   endif
   colorscheme monokai
 elseif has('win32')
-  set t_Co=16
-  colorscheme hybrid
-  let g:airline_powerline_fonts = 0
+"  set t_Co=16
+"  colorscheme hybrid
+"  let g:airline_powerline_fonts = 0
 else
   colorscheme monokai
   let g:airline_powerline_fonts = 1
