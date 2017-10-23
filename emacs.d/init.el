@@ -49,21 +49,35 @@
   (setq ido-use-faces nil)
   )
 
-(use-package projectile
+(use-package all-the-icons)
+
+(use-package neotree
+  :bind ([f8] . neotree-toggle)
   :config
-  (projectile-global-mode)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  (setq neo-smart-open t)
+  (evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+  (evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+  (evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+  (evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
+  )
+
+(use-package projectile
   :diminish
   :config
+  (projectile-global-mode)
   (setq projectile-mode-line
         '(:eval (format " Projectile[%s]"
-                        (projectile-project-name)))))
+                        (projectile-project-name))))
+  (setq projectile-switch-project-action 'neotree-projectile-action)
+  )
 
 (use-package auto-complete
   :commands (auto-complete-mode)
   ;; :diminish auto-complete-mode
   ;; :config
   ;; (ac-config-default)
-)
+  )
 
 (use-package rainbow-delimiters
   ;; :commands (rainbow-delimiters-mode)
