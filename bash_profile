@@ -102,14 +102,14 @@ stty -ixon
 #stty stop undef
 
 function _include {
-    [[ -f $1 ]] && source $1
+    [[ -s $1 ]] && source $1
 }
 
-
 # Nodejs
-if [ -d ~/.nvm ]; then
-    export NVM_DIR=~/.nvm
-    _include "$NVM_DIR/nvm.sh"
+if [ -d $HOME/.nvm ]; then
+    export NVM_DIR=$HOME/.nvm
+    _include "$NVM_DIR/nvm.sh"           # This loads nvm
+    _include "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
 if which pyenv > /dev/null; then
