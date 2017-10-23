@@ -10,3 +10,4 @@ emacs.d/projectile*
 emacs.d/places
 emacs.d/custom.el
 emacs.d/session.*
+emacs.d/url
