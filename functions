@@ -54,7 +54,7 @@ function install_gcloud {
 }
 
 function install_minikube {
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x minikube && mv minikube $HOME/.local/bin/
+    curl -Lo /tmp/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /tmp/minikube && mv /tmp/minikube $HOME/.local/bin/
 }
 
 function install_virtualbox {

@@ -14,8 +14,9 @@ export DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 
-ln -sfv "$DOTFILES_DIR/bash_profile" ~/.bash_profile
 ln -sfv "$DOTFILES_DIR/bashrc" ~/.bashrc
+ln -sfv "$DOTFILES_DIR/bash_profile" ~/.bashrc
+
 # ln -sfv "$DOTFILES_DIR/gitconfig" ~/.gitconfig
 ln -sfv "$DOTFILES_DIR/gitignore_global" ~/.gitignore_global
 ln -sfv "$DOTFILES_DIR/agignore" ~/.agignore
