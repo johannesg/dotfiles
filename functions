@@ -53,6 +53,10 @@ function install_gcloud {
     curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
 }
 
+function install_helm {
+    https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+}
+
 function install_minikube {
     curl -Lo /tmp/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /tmp/minikube && mv /tmp/minikube $HOME/.local/bin/
 }

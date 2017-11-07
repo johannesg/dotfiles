@@ -1,6 +1,6 @@
 # If not running interactively, don't do anything
 
-[ -n "$PS1" ] && return
+[ -z "$PS1" ] && return
 
 # Shell
 
@@ -131,6 +131,10 @@ _include "$HOME/.local/google-cloud-sdk/completion.bash.inc"
 
 if which kubectl > /dev/null; then
     source <(kubectl completion bash)
+fi
+
+if which helm > /dev/null; then
+    source <(helm completion bash)
 fi
 
 if which minikube > /dev/null; then
