@@ -75,6 +75,10 @@ for option in autocd globstar; do
 	shopt -s "$option" 2> /dev/null;
 done;
 
+# up & down map to history search once a command has been started.
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 function _export_path {
     [[ -d $1 ]] && export PATH=$1:$PATH
 }
