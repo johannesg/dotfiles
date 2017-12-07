@@ -16,11 +16,15 @@
 ;; ----------
 ;; Misc
 (eval-when-compile
-  (require 'use-package))
-(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
+  (require 'use-package)
+  (use-package diminish)
+  (require 'bind-key)                ;; if you use any :bind variant
 
-(setq use-package-verbose t)
-(setq use-package-always-ensure t)
+  (setq use-package-verbose t)
+  (setq use-package-always-ensure t)
+  )
+;; (require 'diminish)                ;; if you use :diminish
+
+;; (use-package diminish)
 
 (provide 'init-package)
