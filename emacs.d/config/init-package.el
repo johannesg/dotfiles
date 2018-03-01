@@ -17,12 +17,13 @@
 ;; Misc
 (eval-when-compile
   (require 'use-package)
-  (use-package diminish)
   (require 'bind-key)                ;; if you use any :bind variant
 
   (setq use-package-verbose t)
   (setq use-package-always-ensure t)
   )
+
+(use-package diminish)
 ;; (require 'diminish)                ;; if you use :diminish
 
 ;; (use-package diminish)

@@ -85,6 +85,8 @@
   :config
   )
 
+(use-package popup)
+
 ;; ----------
 ;; Flycheck
 ;; http://www.flycheck.org/manual/latest/index.html
@@ -101,6 +103,8 @@
                 (append flycheck-disabled-checkers
                         '(javascript-jshint)))
   (flycheck-add-mode 'javascript-eslint 'web-mode)
+
+  (use-package flycheck-popup-tip)
   )
 
 (use-package magit
@@ -135,6 +139,8 @@
 (use-package nginx-mode
   :commands (nginx-mode))
 
+(use-package cmake-mode)
+
 (require 'init-elisp)
 
 (require 'init-web)
@@ -145,6 +151,7 @@
 ;; (require 'init-elm)
 (require 'init-php)
 (require 'init-python)
+(require 'init-erlang)
 
 ;; ---------
 ;; Docker
