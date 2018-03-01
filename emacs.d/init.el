@@ -95,7 +95,8 @@
   :defer t
   :config
   ;; turn on flychecking globally
-                                        ;(add-hook 'after-init-hook #'global-flycheck-mode)
+  ;; (add-hook 'after-init-hook #'global-flycheck-mode)
+
   (setq-default flycheck-disabled-checkers
                 (append flycheck-disabled-checkers
                         '(json-jsonlist)))

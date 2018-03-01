@@ -13,3 +13,6 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "emacs.d/modules/distel"]
+	path = emacs.d/modules/distel
+	url = https://github.com/massemanet/distel
