@@ -154,3 +154,4 @@ _export_path "/usr/local/heroku/bin"
 unset -f _include
 unset -f _export_path
 
+[ -s $HOME/.env ] && . $HOME/.env

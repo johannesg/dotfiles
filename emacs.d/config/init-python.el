@@ -1,5 +1,8 @@
 (use-package python
-  :mode (("\\.py\\'" . python-mode )))
+  :mode (("\\.py\\'" . python-mode ))
+  :config
+  (setq python-shell-interpreter "python3")
+  )
 
 (use-package elpy
   :after python
@@ -10,6 +13,8 @@
   ;;   (setq python-shell-completion-native-enable t))
 
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+
+  (setq elpy-rpc-python-command "python3")
 
   (add-hook 'elpy-mode-hook 'flycheck-mode)
   (add-hook 'elpy-mode-hook (lambda ()

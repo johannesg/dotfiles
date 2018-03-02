@@ -54,7 +54,7 @@ function install_gcloud {
 }
 
 function install_helm {
-    https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+    curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
 }
 
 function install_minikube {
