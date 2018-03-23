@@ -16,3 +16,5 @@ alias getclip="xclip -selection c -o"
 
 alias python=python3
 alias pip=pip3
+
+alias 'curl-http2'='docker run -t --rm badouralix/curl-http2'
