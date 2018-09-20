@@ -7,9 +7,6 @@
 [submodule "fonts"]
 	path = powerline-fonts
 	url = https://github.com/powerline/fonts
-[submodule "vim/bundle/neobundle.vim"]
-	path = vim/bundle/neobundle.vim
-	url = https://github.com/Shougo/neobundle.vim
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
