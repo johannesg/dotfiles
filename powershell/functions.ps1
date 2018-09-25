@@ -111,14 +111,14 @@ function paket
     }
 }
 
-function fake
-{
-    if (Test-Path "packages\FAKE\tools\FAKE.exe") {
-        packages\FAKE\tools\FAKE.exe $args
-    } else {
-        Write-Host "fake not found"
-    }
-}
+#function fake
+#{
+#    if (Test-Path "packages\FAKE\tools\FAKE.exe") {
+#        packages\FAKE\tools\FAKE.exe $args
+#    } else {
+#        Write-Host "fake not found"
+#    }
+#}
 
 function msbuild {
 	$path = vswhere -latest -products * -requires Microsoft.Component.MSBuild -property installationPath
