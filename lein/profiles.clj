@@ -5,7 +5,8 @@
                        [lein-localrepo "0.5.3"]]}
 
 
- :repl {:dependencies [[org.clojure/tools.nrepl "0.2.12"]
-                       [com.cemerick/piggieback "0.2.1"]
-                       [weasel "0.7.0"]]
-        :plugins      [[cider/cider-nrepl "0.14.0-SNAPSHOT"]]}}
+ ;; :repl {:dependencies [[org.clojure/tools.nrepl "0.2.12"]
+ ;;                       [com.cemerick/piggieback "0.2.1"]
+ ;;                       [weasel "0.7.0"]]
+ ;;        :plugins      [[cider/cider-nrepl "0.14.0-SNAPSHOT"]]}
+ }

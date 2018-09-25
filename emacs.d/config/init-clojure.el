@@ -34,7 +34,8 @@
                                     (company-mode)
                                     (local-set-key (kbd "C-c C-f") #'cider-figwheel-repl)))
 
-  (evil-set-initial-state 'cider-repl-mode 'emacs)
-  (evil-set-initial-state 'cider-stacktrace-mode 'emacs))
+  ;; (evil-set-initial-state 'cider-repl-mode 'emacs)
+  ;; (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
+  )
 
 (provide 'init-clojure)

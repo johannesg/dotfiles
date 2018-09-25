@@ -19,6 +19,11 @@
 
 (require 'init-editor)
 
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; ------------
 (use-package pt
   :commands (pt-regexp projectile-pt)
@@ -143,6 +148,8 @@
   :commands (nginx-mode))
 
 (use-package cmake-mode)
+
+(use-package eredis)
 
 (require 'init-elisp)
 
