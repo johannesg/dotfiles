@@ -145,6 +145,11 @@ if which minikube > /dev/null; then
     source <(minikube completion bash)
 fi
 
+if [ -d $HOME/.cargo ]; then
+  _export_path "$HOME/.cargo/bin"
+  source <(rustup completions bash)
+fi
+
 # Go etc
 export GOPATH=~/.gocode
 _export_path "/usr/local/go/bin"
@@ -155,3 +160,4 @@ unset -f _include
 unset -f _export_path
 
 [ -s $HOME/.env ] && . $HOME/.env
+
