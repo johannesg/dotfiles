@@ -24,3 +24,5 @@
 
 ;; (load-file "$GOPATH/src/golang.org/x/tools/cmd/oracle/oracle.el")
 
+
+(provide 'init-go)

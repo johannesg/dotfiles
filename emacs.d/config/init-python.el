@@ -17,8 +17,8 @@
   (setq elpy-rpc-python-command "python3")
 
   (add-hook 'elpy-mode-hook 'flycheck-mode)
-  (add-hook 'elpy-mode-hook (lambda ()
-                              (add-hook 'before-save-hook 'elpy-format-code nil t)))
+  ;; (add-hook 'elpy-mode-hook (lambda ()
+  ;;                             (add-hook 'before-save-hook 'elpy-format-code nil t)))
 
   (use-package ein)
   ;; (elpy-use-ipython)
