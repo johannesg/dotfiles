@@ -27,3 +27,15 @@
   lastwa = log --since=1.weeks --oneline --author
   rcp = "!f() { git log --since=$1.$2; }; f"
   rcn = "!f() { git log -n $1; }; f"
+
+# [diff]
+#   tool = kitty
+#   guitool = kitty.gui
+# [difftool]
+#   prompt = false
+#   trustExitCode = true
+# [difftool "kitty"]
+#   cmd = kitty +kitten diff $LOCAL $REMOTE
+# [difftool "kitty.gui"]
+#   cmd = kitty kitty +kitten diff $LOCAL $REMOTE
+
