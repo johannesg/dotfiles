@@ -127,7 +127,9 @@ if [ $OS = "OSX" ]; then
     source $DOTFILES_DIR/osx
 fi
  
-source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
+# source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
+
+source $DOTFILES_DIR/prompt
 
 # The next line updates PATH for the Google Cloud SDK.
 _include "$HOME/.local/google-cloud-sdk/path.bash.inc"

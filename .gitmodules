@@ -13,3 +13,6 @@
 [submodule "emacs.d/modules/distel"]
 	path = emacs.d/modules/distel
 	url = https://github.com/massemanet/distel
+[submodule "bash-git-prompt"]
+	path = bash-git-prompt
+	url = https://github.com/magicmonty/bash-git-prompt.git
