@@ -9,8 +9,15 @@ $DotFiles = $PSScriptRoot
 & cmd.exe /c mklink $home\.gitignore_global $DotFiles\gitignore_global
 
 if (!(Test-Path $home\.lein)) { mkdir $home\.lein }
+if (!(Test-Path $home\Documents\WindowsPowerShell)) { mkdir $home\Documents\WindowsPowerShell }
+if (!(Test-Path $home\Documents\PowerShell)) { mkdir $home\Documents\PowerShell }
+
 
 & cmd.exe /c mklink $home\.lein\profiles.clj $DotFiles\lein\profiles.clj
 
-& cmd.exe /c mklink $home\Documents\WindowsPowershell\Profile.ps1 $DotFiles\powershell\Profile.ps1
-& cmd.exe /c mklink $home\Documents\WindowsPowershell\Microsoft.PowerShell_profile.ps1 $DotFiles\powershell\Microsoft.PowerShell_profile.ps1
+& cmd.exe /c mklink $home\Documents\WindowsPowerShell\Profile.ps1 $DotFiles\powershell\Profile.ps1
+& cmd.exe /c mklink $home\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1 $DotFiles\powershell\Microsoft.PowerShell_profile.ps1
+& cmd.exe /c mklink $home\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 $DotFiles\powershell\Microsoft.PowerShell_profile.ps1
+& cmd.exe /c mklink $home\Documents\PowerShell\profile.ps1 $DotFiles\powershell\profile.ps1
+
+# & cmd.exe /c mklink $home\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\profiles.json $DotFiles\WindowsTerminal\profiles.json

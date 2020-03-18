@@ -1,23 +1,12 @@
+function Setup-Environment {
+  Install-Module posh-git -Scope CurrentUser
+  Install-Module oh-my-posh -Scope CurrentUser
+  Install-Module -Name PSReadLine -AllowPrerelease -Scope CurrentUser -Force -SkipPublisherCheck
+}
+
 function Start-ExplorerHere
 {
   Start-Process -FilePath "$env:SystemRoot\explorer.exe" -ArgumentList "$pwd" | Out-Null
-}
-
-Function Stop-Host
-{
-   if ($nestedpromptlevel -ge 1)
-   {
-       $Host.ExitNestedPrompt()
-   }
-   else
-   {
-       $Host.SetShouldExit($True)
-   }
-}
-
-Function New-NestedHost
-{
-   $Host.EnterNestedPrompt()
 }
 
 #####
@@ -88,11 +77,6 @@ function em {
   }
 }
 
-function gvimr
-{
-   & "C:\Program Files (x86)\Vim\vim74\gvim.exe" --remote-tab $args
-}
-
 function purge-dir
 {
   param($dir)
@@ -102,14 +86,14 @@ function purge-dir
   robocopy /purge $tempDir $dir
 }
 
-function paket
-{
-    if (Test-Path ".paket\paket.exe") {
-        .paket\paket.exe $args
-    } else {
-        Write-Host "paket not found"
-    }
-}
+# function paket
+# {
+#     if (Test-Path ".paket\paket.exe") {
+#         .paket\paket.exe $args
+#     } else {
+#         Write-Host "paket not found"
+#     }
+# }
 
 #function fake
 #{
@@ -131,8 +115,6 @@ function msbuild {
 }
 
 Set-Alias eh Start-ExplorerHere
-Set-Alias x Stop-Host
-Set-Alias nest New-NestedHost
 Set-Alias e Open-Editor
 Set-Alias g Goto-Location
 Set-Alias Get-Random Microsoft.PowerShell.Utility\Get-Random
