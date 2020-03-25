@@ -1,7 +1,9 @@
 vim/bundle
+vim/plugged
 vim/.netrwhist
 tmux/plugins
 emacs.d/elpa
+emacs.d/backups
 emacs.d/auto-save-list
 emacs.d/server
 emacs.d/ido.last

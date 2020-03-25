@@ -27,15 +27,9 @@ function Goto-Location( [string] $location ) {
 
 $go_locations.Clear()
 $go_locations.Add("home", "~")
-$go_locations.Add("tr", "E:\Dev\inexchange\svn\trunk")
-$go_locations.Add("t", "E:\Dev\inexchange\svn\branches\test")
-$go_locations.Add("d", "E:\Dev\inexchange\svn\branches\working")
-$go_locations.Add("m", "E:\Dev\inexchange\svn\merge")
 $go_locations.Add("pf", "$env:ProgramFiles")
-$go_locations.Add("unsent", "$env:ProgramData\InExchange Factorum\VirtualPrinter\$env:COMPUTERNAME\$env:USERNAME\Unsent")
 $go_locations.Add("appdata", "$env:ProgramData")
-$go_locations.Add("nh", "E:\dev\Source\NHibernate\trunk\nhibernate\src")
-$go_locations.Add("dep", "E:\Dev\inexchange\svn\trunk\deployment\Configurations")
+$go_locations.Add("jpj", "C:\Dev\jpj")
 
 function wp
 {
