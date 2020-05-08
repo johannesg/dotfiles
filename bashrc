@@ -87,7 +87,10 @@ function _export_path {
 
 
 _export_path "$HOME/.local/bin"
-_export_path "/home/linuxbrew/.linuxbrew/bin"
+
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
