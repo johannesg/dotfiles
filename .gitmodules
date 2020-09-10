@@ -1,12 +1,6 @@
-[submodule "shell/liquidprompt"]
-	path = shell/liquidprompt
-	url = https://github.com/nojhan/liquidprompt.git
 [submodule ".tmux/plugins/tpm"]
 	path = .tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "fonts"]
-	path = powerline-fonts
-	url = https://github.com/powerline/fonts
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
