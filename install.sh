@@ -28,9 +28,6 @@ ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 ln -snfv "$DOTFILES_DIR/i3" ~/.i3
 
 ln -sfv "$DOTFILES_DIR/lein/profiles.clj" ~/.lein/profiles.clj
-ln -sfv "$DOTFILES_DIR/shell/liquidpromptrc" ~/.config/liquidpromptrc
-
-$DOTFILES_DIR/powerline-fonts/install.sh
 
 if [ "$(uname)" == "Darwin" -a -f "$DOTFILES_DIR/install.osx.sh" ]; then
     source "$DOTFILES_DIR/install.osx.sh"

@@ -1,0 +1,68 @@
+{
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "user_info_separator": "",
+            "display_host": false,
+            "prefix": "<#CB4B16>┏[</>",
+            "postfix": "<#CB4B16>]</>"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "<#CB4B16>[</>",
+            "postfix": "<#CB4B16>]</>"
+          }
+        },
+        {
+          "type": "root",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "<#CB4B16>[</>",
+            "postfix": "<#CB4B16>]</>"
+          }
+        },
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "<#CB4B16>[x</>",
+            "postfix": "<#CB4B16>]</>"
+          }
+        }
+      ]
+    },
+    {
+      "type": "newline"
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "style": "short",
+            "prefix": "<#CB4B16>┖[</>",
+            "postfix": "<#CB4B16>]></>"
+          }
+        }
+      ]
+    }
+  ],
+  "final_space": true
+}

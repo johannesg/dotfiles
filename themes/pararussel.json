@@ -1,0 +1,81 @@
+{
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "",
+            "text": "<#C591E8>\u276F</><#69FF94>\u276F</>"
+          }
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#56B6C2",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#D0666F",
+          "properties": {
+            "branch_icon": "",
+            "display_status": false,
+            "prefix": "<#5FAAE8>git:(</>",
+            "postfix": "<#5FAAE8>)</>"
+          }
+        },
+        {
+          "type": "exit",
+          "style": "plain",
+          "foreground": "#DCB977",
+          "properties": {
+            "prefix": "\uD00D",
+            "display_exit_code": false
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "type": "command",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "shell": "bash",
+            "command": "git log --pretty=format:%cr -1 || date +%H:%m:%S"
+          }
+        }
+      ]
+    },
+    {
+      "type": "newline"
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "#ffffff",
+          "properties": {
+            "prefix": "",
+            "text": "\uF441"
+          }
+        }
+      ]
+    }
+  ],
+  "final_space": true
+}

@@ -74,3 +74,8 @@ function install_dockercompose {
     sudo chmod +x /usr/local/bin/docker-compose
     sudo curl -L "https://raw.githubusercontent.com/docker/compose/$version/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
 }
+
+function install_ohmyposh {
+  wget https://github.com/JanDeDobbeleer/oh-my-posh3/releases/latest/download/posh-linux-amd64 -O ~/.local/bin/oh-my-posh
+  chmod +x ~/.local/bin/oh-my-posh
+}
