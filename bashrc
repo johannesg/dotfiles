@@ -141,6 +141,7 @@ source $DOTFILES_DIR/prompt
 # _include "$HOME/.local/google-cloud-sdk/completion.bash.inc"
 
 _include "$HOME/.asdf/asdf.sh"
+_include "$HOME/.asdf/completions/asdf.bash"
 
 if which kubectl > /dev/null; then
     source <(kubectl completion bash)
