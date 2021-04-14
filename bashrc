@@ -135,10 +135,12 @@ fi
 source $DOTFILES_DIR/prompt
 
 # The next line updates PATH for the Google Cloud SDK.
-_include "$HOME/.local/google-cloud-sdk/path.bash.inc"
+# _include "$HOME/.local/google-cloud-sdk/path.bash.inc"
 
 # The next line enables shell command completion for gcloud.
-_include "$HOME/.local/google-cloud-sdk/completion.bash.inc"
+# _include "$HOME/.local/google-cloud-sdk/completion.bash.inc"
+
+_include "$HOME/.asdf/asdf.sh"
 
 if which kubectl > /dev/null; then
     source <(kubectl completion bash)

@@ -48,6 +48,17 @@
           }
         },
         {
+          "type": "kubectl",
+          "style": "powerline",
+          "powerline_symbol": "\uE0B0",
+          "foreground": "#000000",
+          "background": "#ebcc34",
+          "properties": {
+            "prefix": " \uFD31 ",
+            "template": "{{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}}"
+          }
+        },
+        {
           "type": "exit",
           "style": "powerline",
           "powerline_symbol": "\uE0B0",

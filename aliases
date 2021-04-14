@@ -16,7 +16,10 @@ alias getclip="xclip -selection c -o"
 
 alias python=python3
 alias pip=pip3
+alias k=kubectl
 
 alias 'curl-http2'='docker run -t --rm badouralix/curl-http2'
 
 alias icat="kitty +kitten icat"
+
+# alias aws='docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli'
