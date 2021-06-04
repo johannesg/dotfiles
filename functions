@@ -1,53 +1,53 @@
 #!/bin/bash
 
-_GOPATH=$GOPATH
+# _GOPATH=$GOPATH
 
-function em() {
-   emacsclient -n $1
-}
+# function em() {
+#    emacsclient -n $1
+# }
 
-function emc() {
-   emacsclient -n -c $1
-}
+# function emc() {
+#    emacsclient -n -c $1
+# }
 
-function flux() {
-    xflux -l 58 -g 13
-}
+# function flux() {
+#     xflux -l 58 -g 13
+# }
 
-function gopath_old {
-  export GOPATH=$_GOPATH:`pwd`
-  export GOPATH=$_GOPATH:`pwd`:`pwd`/vendor
-  echo "Setting GOPATH to $GOPATH"
-}
+# function gopath_old {
+#   export GOPATH=$_GOPATH:`pwd`
+#   export GOPATH=$_GOPATH:`pwd`:`pwd`/vendor
+#   echo "Setting GOPATH to $GOPATH"
+# }
 
-function gopath {
-  export GOPATH=`pwd`
-  export GO15VENDOREXPERIMENT=1
-  echo "Setting GOPATH to $GOPATH"
-}
+# function gopath {
+#   export GOPATH=`pwd`
+#   export GO15VENDOREXPERIMENT=1
+#   echo "Setting GOPATH to $GOPATH"
+# }
 
-function update_gotools {
-  echo "gocode"
-  go get -u github.com/nsf/gocode
-  echo "goimports"
-  go get -u golang.org/x/tools/cmd/goimports
-  echo "oracle"
-  go get -u golang.org/x/tools/cmd/oracle
-  echo "gb"
-  go get -u github.com/constabulary/gb/...
-  echo "protobuf"
-  go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
-  echo "godep"
-  go get -u github.com/tools/godep
-  echo "gogo protobuf"
-  go get -u github.com/gogo/protobuf/proto
-  go get -u github.com/gogo/protobuf/protoc-gen-gogo
-  go get -u github.com/gogo/protobuf/gogoproto
-  echo "govendor"
-  go get -u github.com/kardianos/govendor
-  echo "godef"
-  go get -u github.com/rogpeppe/godef
-}
+# function update_gotools {
+#   echo "gocode"
+#   go get -u github.com/nsf/gocode
+#   echo "goimports"
+#   go get -u golang.org/x/tools/cmd/goimports
+#   echo "oracle"
+#   go get -u golang.org/x/tools/cmd/oracle
+#   echo "gb"
+#   go get -u github.com/constabulary/gb/...
+#   echo "protobuf"
+#   go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+#   echo "godep"
+#   go get -u github.com/tools/godep
+#   echo "gogo protobuf"
+#   go get -u github.com/gogo/protobuf/proto
+#   go get -u github.com/gogo/protobuf/protoc-gen-gogo
+#   go get -u github.com/gogo/protobuf/gogoproto
+#   echo "govendor"
+#   go get -u github.com/kardianos/govendor
+#   echo "godef"
+#   go get -u github.com/rogpeppe/godef
+# }
 
 function install_gcloud {
     curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
@@ -61,12 +61,22 @@ function install_minikube {
     curl -Lo /tmp/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /tmp/minikube && mv /tmp/minikube $HOME/.local/bin/
 }
 
-function install_virtualbox {
-    echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null \
-        && wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - \
-        && sudo apt update \
-        && sudo apt install dkms virtualbox-5.1
+function install_kubernetes {
+    curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl \
+      && chmod +x ~/.local/bin/kubectl
 }
+
+function install_skaffold {
+    curl -Lo ~/.local/bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 \
+      && chmod +x ~/.local/bin/skaffold
+}
+
+# function install_virtualbox {
+#     echo "deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list > /dev/null \
+#         && wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add - \
+#         && sudo apt update \
+#         && sudo apt install dkms virtualbox-5.1
+# }
 
 function install_dockercompose {
     local version="1.16.1"
