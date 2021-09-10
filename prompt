@@ -23,10 +23,12 @@
 #     source $DOTFILES_DIR/bash-git-prompt/gitprompt.sh
 # fi
 
-function _update_ps1() {
-  PS1="$(oh-my-posh -config ~/.dotfiles/themes/paradox.json -error $?)"
-}
+# function _update_ps1() {
+#   PS1="$(oh-my-posh -config ~/.dotfiles/themes/paradox.json -error $?)"
+# }
 
-if [ "$TERM" != "linux" ] && [ -x "$(command -v oh-my-posh)" ]; then
-  PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
-fi
+# if [ "$TERM" != "linux" ] && [ -x "$(command -v oh-my-posh)" ]; then
+#   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# fi
+
+eval "$(oh-my-posh --init --shell bash --config ~/.dotfiles/themes/slimfat.omp.json)"
