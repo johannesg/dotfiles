@@ -74,7 +74,7 @@
         {
           "type": "git",
           "style": "diamond",
-          "foreground": "#ffeb3b",
+          "foreground": "#2FDA4E",
           "background": "#2f2f2f",
           "properties": {
             "display_stash_count": true,
