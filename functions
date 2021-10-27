@@ -54,7 +54,7 @@ function install_gcloud {
 }
 
 function install_helm {
-    curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 }
 
 function install_minikube {
@@ -98,4 +98,9 @@ function install_ohmyposh {
 
 function preview_themes {
     for file in ~/.poshthemes/*.omp.json; do echo "$file\n"; oh-my-posh --config $file --shell universal; echo "\n"; done;
+}
+
+function klog {
+  format='{{bold(fixed_size 19 fblog_timestamp)}} {{bold(color_rgb 138 43 226 KUBE_POD_NAME)}} {{level_style (uppercase (fixed_size 5 fblog_level))}}:{{bold(color_rgb 138 43 226 fblog_prefix)}} {{fblog_message}}'
+  stern $1 -o raw | fblog --main-line-format "$format"
 }
