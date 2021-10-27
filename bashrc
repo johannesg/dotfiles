@@ -166,6 +166,7 @@ _export_path "/usr/local/go/bin"
 _export_path "${GOPATH//://bin:}/bin"
 _export_path "/usr/local/heroku/bin"
 # _export_path "$HOME/.local/maven/bin"
+_export_path "$HOME/.cargo/bin"
 
 unset -f _include
 unset -f _export_path

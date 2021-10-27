@@ -14,8 +14,6 @@ alias cinnamon-restart='cinnamon –replace -d :0.0 > /dev/null 2>&1 &'
 alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
-alias python=python3
-alias pip=pip3
 alias k=kubectl
 
 alias 'curl-http2'='docker run -t --rm badouralix/curl-http2'
