@@ -15,6 +15,7 @@ alias setclip="xclip -selection c"
 alias getclip="xclip -selection c -o"
 
 alias k=kubectl
+complete -F __start_kubectl k
 
 alias 'curl-http2'='docker run -t --rm badouralix/curl-http2'
 

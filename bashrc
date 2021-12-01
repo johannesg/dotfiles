@@ -167,6 +167,7 @@ _export_path "${GOPATH//://bin:}/bin"
 _export_path "/usr/local/heroku/bin"
 # _export_path "$HOME/.local/maven/bin"
 _export_path "$HOME/.cargo/bin"
+_export_path "$HOME/.krew/bin"
 
 unset -f _include
 unset -f _export_path
@@ -176,3 +177,5 @@ unset -f _export_path
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+complete -C /usr/bin/terraform terraform
