@@ -111,6 +111,6 @@ function preview_themes {
 }
 
 function klog {
-  format='{{bold(fixed_size 19 fblog_timestamp)}} {{bold(color_rgb 138 43 226 KUBE_POD_NAME)}} {{level_style (uppercase (fixed_size 5 fblog_level))}}:{{bold(color_rgb 138 43 226 fblog_prefix)}} {{fblog_message}}'
+  format='{{bold(fixed_size 19 fblog_timestamp)}} {{level_style (uppercase (fixed_size 5 fblog_level))}}:{{bold(color_rgb 138 43 226 fblog_prefix)}} {{fblog_message}} {{stack_trace}}'
   stern $1 -o raw | fblog --main-line-format "$format"
 }
