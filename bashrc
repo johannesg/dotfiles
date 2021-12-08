@@ -88,20 +88,13 @@ function _export_path {
 
 _export_path "$HOME/.local/bin"
 
-if [ -d /home/linuxbrew/.linuxbrew ]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-# Add tab completion for many Bash commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
-    source  "$(brew --prefix)/etc/bash_completion";
-elif [ -f /usr/share/bash-completion/bash_completion ]; then
-    source  /usr/share/bash-completion/bash_completion
-elif [ -f /etc/bash_completion ]; then
-    source /etc/bash_completion
+# enable bash completion in interactive shells
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
 fi
 
 #http://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
@@ -133,6 +126,7 @@ fi
 # source $DOTFILES_DIR/shell/liquidprompt/liquidprompt
 
 source $DOTFILES_DIR/prompt
+source $DOTFILES_DIR/brewrc
 
 # The next line updates PATH for the Google Cloud SDK.
 # _include "$HOME/.local/google-cloud-sdk/path.bash.inc"
@@ -155,10 +149,10 @@ if which minikube > /dev/null; then
     source <(minikube completion bash)
 fi
 
-if [ -d $HOME/.cargo ]; then
-  _export_path "$HOME/.cargo/bin"
-  source <(rustup completions bash)
-fi
+#if [ -d $HOME/.cargo ]; then
+#  _export_path "$HOME/.cargo/bin"
+#  source <(rustup completions bash)
+#fi
 
 # Go etc
 export GOPATH=~/.gocode
