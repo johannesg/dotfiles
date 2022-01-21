@@ -116,3 +116,8 @@ function klog {
   format='{{bold(fixed_size 19 fblog_timestamp)}} {{level_style (uppercase (fixed_size 5 fblog_level))}}:{{bold(color_rgb 138 43 226 fblog_prefix)}} {{fblog_message}} {{stack_trace}}'
   stern $1 -o raw | fblog --main-line-format "$format"
 }
+
+function klog2 {
+  format='{{color .PodColor .PodName}} {{with $d := .Message | parseJSON}}{{$d.level}} {{$d.message}}{{if $d.stack_trace}}{{"\n"}}{{$d.stack_trace}}{{end}}{{end}}{{"\n"}}'
+  k stern $1 --template="$format"
+}
