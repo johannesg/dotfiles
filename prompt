@@ -31,4 +31,4 @@
 #   PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 # fi
 
-eval "$(oh-my-posh --init --shell bash --config ~/.dotfiles/themes/slimfat.omp.json)"
+eval "$(oh-my-posh prompt init bash --config ~/.dotfiles/themes/slimfat.omp.json)"
