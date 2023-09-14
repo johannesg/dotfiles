@@ -8,6 +8,7 @@ return {
 	{ 'theprimeagen/harpoon' },
 	{ 'mbbill/undotree' },
 	{ 'tpope/vim-fugitive' },
+    { 'numToStr/Comment.nvim' },
     {
     -- Set lualine as statusline
     'nvim-lualine/lualine.nvim', 
