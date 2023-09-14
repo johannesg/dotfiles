@@ -26,6 +26,7 @@ ln -snfv "$DOTFILES_DIR/emacs.d" ~/.emacs.d
 ln -sfv "$DOTFILES_DIR/tmux.conf" ~/.tmux.conf
 ln -snfv "$DOTFILES_DIR/tmux" ~/.tmux
 ln -snfv "$DOTFILES_DIR/i3" ~/.i3
+ln -snfv "$DOTFILES_DIR/nvim" ~/.config/nvim
 
 ln -sfv "$DOTFILES_DIR/lein/profiles.clj" ~/.lein/profiles.clj
 
