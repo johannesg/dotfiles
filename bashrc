@@ -85,7 +85,6 @@ function _export_path {
     [[ -d $1 ]] && export PATH=$1:$PATH
 }
 
-
 _export_path "$HOME/.local/bin"
 
 # enable bash completion in interactive shells
@@ -137,17 +136,6 @@ source $DOTFILES_DIR/brewrc
 _include "$HOME/.asdf/asdf.sh"
 _include "$HOME/.asdf/completions/asdf.bash"
 
-if which kubectl > /dev/null; then
-    source <(kubectl completion bash)
-fi
-
-if which helm > /dev/null; then
-    source <(helm completion bash)
-fi
-
-if which minikube > /dev/null; then
-    source <(minikube completion bash)
-fi
 
 #if [ -d $HOME/.cargo ]; then
 #  _export_path "$HOME/.cargo/bin"
@@ -177,3 +165,6 @@ complete -C /usr/bin/terraform terraform
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# bun
+export BUN_INSTALL="$HOME/.bun"
+[ -s "$BUN_INSTALL/bin/bun" ] && export PATH=$BUN_INSTALL/bin:$PATH

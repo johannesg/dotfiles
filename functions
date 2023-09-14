@@ -86,14 +86,7 @@ function install_dockercompose {
 }
 
 function install_ohmyposh {
-    wget https://github.com/JanDeDobbeleer/oh-my-posh3/releases/latest/download/posh-linux-amd64 -O ~/.local/bin/oh-my-posh
-    chmod +x ~/.local/bin/oh-my-posh
-
-    mkdir ~/.poshthemes
-    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
-    unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
-    chmod u+rw ~/.poshthemes/*.json
-    rm ~/.poshthemes/themes.zip
+    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 }
 
 function install_krew {
@@ -106,6 +99,13 @@ function install_krew {
   tar zxvf "${KREW}.tar.gz" &&
   ./"${KREW}" install krew
   )
+}
+
+function install_lazygit {
+  LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+  curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+  tar xf /tmp/lazygit.tar.gz lazygit
+  install lazygit $HOME/.local/bin
 }
 
 function preview_themes {
