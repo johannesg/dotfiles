@@ -17,19 +17,22 @@ local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
-  mapping = {
-    -- `Enter` key to confirm completion
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    formatting = {
+        format = require("tailwindcss-colorizer-cmp").formatter
+    },
+    mapping = {
+        -- `Enter` key to confirm completion
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
 
-    -- Ctrl+Space to trigger completion menu
-    ['<C-Space>'] = cmp.mapping.complete(),
+        -- Ctrl+Space to trigger completion menu
+        ['<C-Space>'] = cmp.mapping.complete(),
 
-    -- Navigate between snippet placeholder
-    ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-    ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        -- Navigate between snippet placeholder
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
 
-      ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-      ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-      ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  }
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    }
 })

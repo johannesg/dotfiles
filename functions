@@ -108,6 +108,15 @@ function install_lazygit {
   install lazygit $HOME/.local/bin
 }
 
+function install_nvim {
+  curl -Lo /tmp/nvim-linux64.tar.gz "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
+  tar -C $HOME/.local -zxf /tmp/nvim-linux64.tar.gz
+  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/nvim
+  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/vim
+  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/vi
+  rm /tmp/nvim-linux64.tar.gz
+}
+
 function preview_themes {
     for file in ~/.poshthemes/*.omp.json; do echo "$file\n"; oh-my-posh --config $file --shell universal; echo "\n"; done;
 }

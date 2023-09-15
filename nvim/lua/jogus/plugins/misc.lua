@@ -12,8 +12,8 @@ return {
 	{ 'tpope/vim-fugitive' },
     { 'numToStr/Comment.nvim' },
     {
-    -- Set lualine as statusline
-    'nvim-lualine/lualine.nvim', 
+        -- Set lualine as statusline
+        'nvim-lualine/lualine.nvim', 
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         -- See `:help lualine.txt`
         opts = {
@@ -27,4 +27,14 @@ return {
           },
         }
     },
+
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        -- optionally, override the default options:
+        config = function()
+            require("tailwindcss-colorizer-cmp").setup({
+                color_square_width = 2,
+            })
+        end
+    }
 }
