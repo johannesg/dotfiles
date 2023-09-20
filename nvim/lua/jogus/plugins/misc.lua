@@ -10,6 +10,7 @@ return {
 	{ 'theprimeagen/harpoon' },
 	{ 'mbbill/undotree' },
 	{ 'tpope/vim-fugitive' },
+	{ 'tpope/vim-surround' },
     { 'numToStr/Comment.nvim' },
     {
         -- Set lualine as statusline
