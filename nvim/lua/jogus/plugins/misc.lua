@@ -11,6 +11,10 @@ return {
 	{ 'mbbill/undotree' },
 	{ 'tpope/vim-fugitive' },
 	{ 'tpope/vim-surround' },
+    { 'nvim-tree/nvim-tree.lua', dependencies = {
+        lazy = false,
+        'nvim-tree/nvim-web-devicons'
+        } },
     { 'numToStr/Comment.nvim' },
     {
         -- Set lualine as statusline
