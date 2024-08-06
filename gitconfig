@@ -7,6 +7,7 @@
 #  autocrlf = true
 #  whitespace = cr-at-eol #Get rid of ^M at the end of rows when diff.
   excludesfile = ~/.gitignore_global
+  # sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 [credential]
   helper = cache
 [log]
