@@ -160,7 +160,7 @@ unset -f _export_path
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-complete -C /usr/bin/terraform terraform
+# complete -C /usr/bin/terraform terraform
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
@@ -168,3 +168,4 @@ complete -C /usr/bin/terraform terraform
 # bun
 export BUN_INSTALL="$HOME/.bun"
 [ -s "$BUN_INSTALL/bin/bun" ] && export PATH=$BUN_INSTALL/bin:$PATH
+
