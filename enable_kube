@@ -1,13 +1,14 @@
 #!/bin/bash
 
-if which kubectl > /dev/null; then
+if command -v kubectl >/dev/null 2>&1; then
+  echo "Enable kubectl completions"
   source <(kubectl completion bash)
 fi
 
-if which helm > /dev/null; then
-  source <(helm completion bash)
-fi
+# if which helm > /dev/null; then
+  # source <(helm completion bash)
+# fi
 
-if which minikube > /dev/null; then
-  source <(minikube completion bash)
-fi
+# if which minikube > /dev/null; then
+  # source <(minikube completion bash)
+# fi
