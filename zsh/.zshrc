@@ -38,4 +38,6 @@ alias ll='ls -lh'
 alias ls='ls -G'
 alias lsa='ls -lah'
 
+source $HOME/.env
+
 eval "$(starship init zsh)"

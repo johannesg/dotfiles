@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.automatically_reload_config = true
+config.use_fancy_tab_bar = true
 config.enable_tab_bar = true
 config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "RESIZE"
