@@ -50,25 +50,25 @@
 # }
 
 function install_gcloud {
-    curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
+  curl https://sdk.cloud.google.com | bash -s -- --disable-prompts --install-dir="$HOME/.local"
 }
 
 function install_helm {
-    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
 }
 
 function install_minikube {
-    curl -Lo /tmp/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /tmp/minikube && mv /tmp/minikube $HOME/.local/bin/
+  curl -Lo /tmp/minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 && chmod +x /tmp/minikube && mv /tmp/minikube $HOME/.local/bin/
 }
 
 function install_kubernetes {
-    curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl \
-      && chmod +x ~/.local/bin/kubectl
+  curl -L "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o ~/.local/bin/kubectl &&
+    chmod +x ~/.local/bin/kubectl
 }
 
 function install_skaffold {
-    curl -Lo ~/.local/bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 \
-      && chmod +x ~/.local/bin/skaffold
+  curl -Lo ~/.local/bin/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 &&
+    chmod +x ~/.local/bin/skaffold
 }
 
 # function install_virtualbox {
@@ -79,25 +79,26 @@ function install_skaffold {
 # }
 
 function install_dockercompose {
-    local version="1.16.1"
-    sudo curl -L "https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    sudo chmod +x /usr/local/bin/docker-compose
-    sudo curl -L "https://raw.githubusercontent.com/docker/compose/$version/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
+  local version="1.16.1"
+  sudo curl -L "https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+  sudo curl -L "https://raw.githubusercontent.com/docker/compose/$version/contrib/completion/bash/docker-compose" -o /etc/bash_completion.d/docker-compose
 }
 
 function install_ohmyposh {
-    curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
+  curl -s https://ohmyposh.dev/install.sh | bash -s -- -d ~/.local/bin
 }
 
 function install_krew {
   (
-  set -x; cd "$(mktemp -d)" &&
-  OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
-  ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
-  KREW="krew-${OS}_${ARCH}" &&
-  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
-  tar zxvf "${KREW}.tar.gz" &&
-  ./"${KREW}" install krew
+    set -x
+    cd "$(mktemp -d)" &&
+      OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+      ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+      KREW="krew-${OS}_${ARCH}" &&
+      curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+      tar zxvf "${KREW}.tar.gz" &&
+      ./"${KREW}" install krew
   )
 }
 
@@ -118,7 +119,11 @@ function install_nvim {
 }
 
 function preview_themes {
-    for file in ~/.poshthemes/*.omp.json; do echo "$file\n"; oh-my-posh --config $file --shell universal; echo "\n"; done;
+  for file in ~/.poshthemes/*.omp.json; do
+    echo "$file\n"
+    oh-my-posh --config $file --shell universal
+    echo "\n"
+  done
 }
 
 function klog {
