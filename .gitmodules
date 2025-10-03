@@ -7,3 +7,6 @@
 [submodule "emacs.d/modules/distel"]
 	path = emacs.d/modules/distel
 	url = https://github.com/massemanet/distel
+[submodule "zsh/.zgenom"]
+	path = zsh/.zgenom
+	url = https://github.com/jandamm/zgenom.git
