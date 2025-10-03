@@ -4,33 +4,38 @@
 export HISTFILE="$HOME/.zsh_history"
 
 # set the maximum number of lines to be saved in the history file
-export HISTSIZE="100000"
+export HISTSIZE="10000"
 export SAVEHIST="$HISTSIZE"
 
+# Share history in every terminal session
+setopt SHARE_HISTORY
 # append new history entries to the history file
 setopt APPEND_HISTORY
-
 # save each command to the history file as soon as it is executed
 setopt INC_APPEND_HISTORY
-
 # ignore recording duplicate consecutive commands in the history
 setopt HIST_IGNORE_DUPS
-
 # ignore commands that start with a space in the history
 setopt HIST_IGNORE_SPACE
 
 
-
 # enable auto completions
 autoload -Uz compinit && compinit
+# arrow driven completions
+zstyle ':completion:*' menu select
+
 
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 #
 # search history using Up and Down keys
 # >>> up arrow | down arrow
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+# bindkey "^[[A" history-beginning-search-backward
+# bindkey "^[[B" history-beginning-search-forward
+bindkey "^[[A" history-search-backward
+bindkey "^[[B" history-search-forward
+# bindkey "^[[A" up-line-or-history
+# bindkey "^[[B" down-line-or-history
 
 alias l='ls -lah'
 alias la='ls -lAh'
