@@ -130,3 +130,7 @@ function klog {
   format='{{color .PodColor .PodName}} {{with $d := .Message | parseJSON}}{{ index ($d) "@timestamp"}} {{$d.level}} | {{$d.logger_name}} | {{$d.message}}{{if $d.stack_trace}}{{"\n"}}{{$d.stack_trace}}{{end}}{{end}}{{"\n"}}'
   kubectl stern $1 --template="$format"
 }
+
+function install_zgenom {
+  git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+}
