@@ -1,5 +1,10 @@
 # export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=/opt/homebrew/share/zsh-syntax-highlighting/highlighters
 # load zgenom
+
+if [ ! -d "${HOME}/.zgenom" ]; then
+  git clone https://github.com/jandamm/zgenom.git "${HOME}/.zgenom"
+fi
+
 source "${HOME}/.zgenom/zgenom.zsh"
 
 # Check for plugin and zgenom updates every 7 days
