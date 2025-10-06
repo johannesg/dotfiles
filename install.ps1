@@ -10,7 +10,7 @@ mkdir .config
 # & cmd.exe /c mklink /D $home\.emacs.d $DotFiles\emacs.d
 # & cmd.exe /c mklink $home\.gitconfig $DotFiles\gitconfig
 # & cmd.exe /c mklink $home\.gitignore_global $DotFiles\gitignore_global
-& cmd.exe /c mklink /D $home\AppData\Local\nvim $DotFiles\nvim
+& cmd.exe /c mklink /D $home\AppData\Local\nvim $DotFiles\nvim\.config\nvim
 & cmd.exe /c mklink /D $home\.config\wezterm $DotFiles\wezterm\.config\wezterm
 & cmd.exe /c mklink $home\.config\starship.toml $DotFiles\starship\.config\starship.toml
 
