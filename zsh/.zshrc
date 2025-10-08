@@ -15,6 +15,7 @@ zgenom autoupdate
 if ! zgenom saved; then
     echo "Creating a zgenom save"
 
+    zgenom load zsh-users/zsh-completions
     zgenom load zsh-users/zsh-autosuggestions
     zgenom load zsh-users/zsh-syntax-highlighting
 
