@@ -58,6 +58,9 @@ zstyle ':completion:*' menu select
 # bindkey "^[[B" history-beginning-search-forward
 bindkey "^[[A" history-search-backward
 bindkey "^[[B" history-search-forward
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+bindkey "^[[3~" delete-char-or-list
 # bindkey "^[[A" up-line-or-history
 # bindkey "^[[B" down-line-or-history
 
