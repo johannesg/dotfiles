@@ -32,10 +32,19 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
 	config.line_height = 1.2
 	config.cell_width = 1.0
 
+	config.freetype_load_target = "Light"
+	config.freetype_render_target = "HorizontalLcd"
+	-- config.front_end = "OpenGL"
+	config.underline_thickness = "2px"
+
 	table.insert(launch_menu, {
 		label = "PowerShell",
 		args = { "pwsh.exe" },
 	})
+
+	config.keys = {
+		{ key = "l", mods = "ALT", action = wezterm.action.ShowLauncher },
+	}
 
 	-- Find installed visual studio version(s) and add their compilation
 	-- environment command prompts to the menu
