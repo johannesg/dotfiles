@@ -19,7 +19,7 @@ config.window_padding = {
 	bottom = 10,
 }
 
-config.initial_cols = 120
+config.initial_cols = 160
 config.initial_rows = 50
 
 local launch_menu = {}
