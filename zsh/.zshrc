@@ -70,6 +70,14 @@ alias ll='ls -lh'
 alias ls='ls -G'
 alias lsa='ls -lah'
 
-source $HOME/.env
+function _export_path {
+    [[ -d $1 ]] && export PATH=$1:$PATH
+}
+
+_export_path "$HOME/.local/bin"
+
+[[ -f $HOME/.env ]] && source $HOME/.env
+
+unset -f _export_path
 
 eval "$(starship init zsh)"

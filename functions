@@ -109,13 +109,22 @@ function install_lazygit {
   install /tmp/lazygit $HOME/.local/bin
 }
 
-function install_nvim {
-  curl -Lo /tmp/nvim-linux64.tar.gz "https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz"
-  tar -C $HOME/.local -zxf /tmp/nvim-linux64.tar.gz
-  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/nvim
-  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/vim
-  ln -sfv $HOME/.local/nvim-linux64/bin/nvim $HOME/.local/bin/vi
-  rm /tmp/nvim-linux64.tar.gz
+function install_nvim_x64 {
+  curl -Lo /tmp/nvim.tar.gz "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz"
+  tar -C $HOME/.local -zxf /tmp/nvim.tar.gz
+  ln -sfv $HOME/.local/nvim-linux-x86_64/bin/nvim $HOME/.local/bin/nvim
+  ln -sfv $HOME/.local/nvim-linux-x86_64/bin/nvim $HOME/.local/bin/vim
+  ln -sfv $HOME/.local/nvim-linux-x86_64/bin/nvim $HOME/.local/bin/vi
+  rm /tmp/nvim.tar.gz
+}
+
+function install_nvim_arm64 {
+  curl -Lo /tmp/nvim.tar.gz "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-arm64.tar.gz"
+  tar -C $HOME/.local -zxf /tmp/nvim.tar.gz
+  ln -sfv $HOME/.local/nvim-linux-arm64/bin/nvim $HOME/.local/bin/nvim
+  ln -sfv $HOME/.local/nvim-linux-arm64/bin/nvim $HOME/.local/bin/vim
+  ln -sfv $HOME/.local/nvim-linux-arm64/bin/nvim $HOME/.local/bin/vi
+  rm /tmp/nvim.tar.gz
 }
 
 function preview_themes {
